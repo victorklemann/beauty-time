@@ -1,0 +1,98 @@
+<div class="row">
+   <div class="col-sm-12">
+      <app-card>
+         <form>
+            <div class="form-group">
+               <label class="col-form-label">Usuário</label>
+               <div class="row">
+                  <div class="col-md-12">
+                     <input type="text" class="form-control">
+                  </div>
+               </div>
+
+               <label class="col-form-label">Nome</label>
+               <div class="row">
+                  <div class="col-sm-12">
+                     <input type="text" class="form-control">
+                  </div>
+               </div>
+            
+               <label class="col-form-label">E-mail</label>
+               <div class="row">
+                  <div class="col-sm-12">
+                     <input type="email" class="form-control">
+                  </div>
+               </div>
+
+               <label class="col-form-label">Telefone</label>
+               <div class="row">
+                  <div class="col-sm-12">
+                     <input type="text" class="form-control">
+                  </div>
+               </div>
+
+               <br />
+
+               <div class="card card-border-primary">
+                  <div class="card-header">
+                     <h5>Localização</h5>
+                  </div>
+
+                  <div class="card-block">
+                     <div class="form-group">
+                        <label class="col-form-label">CEP</label>
+                        <div class="row">
+                           <div class="col-sm-8">
+                              <input type="text" class="form-control">
+                           </div>
+                        </div>
+
+                        <label class="col-form-label">Endereço</label>
+                        <div class="row">
+                           <div class="col-sm-8">
+                              <input type="text" class="form-control">
+                           </div>
+                        </div>
+
+                        <div class="row">
+                           <div class="col-sm-4">
+                              <label class="col-form-label">Estado</label>
+                              <select name="select" class="form-control">
+                                 <option value="opt1">- Selecione -</option>
+                                 <option value="opt2">Type 2</option>
+                              </select>
+                           </div>
+
+                           <div class="col-sm-8"> 
+                              <label class="col-form-label">Cidade</label>
+                              <select name="select" class="form-control">
+                                 <option value="opt1">- Selecione -</option>
+                                 <option value="opt2">Type 2</option>
+                              </select>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+
+               </div>
+
+               <div class="row">
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                     <a class="btn btn-primary btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Novo</a>
+                  </div>
+
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                     <a class="btn btn-success btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Salvar</a>
+                  </div>
+
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                     <a class="btn btn-danger btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Cancelar</a>
+                  </div>
+               </div>
+
+            </div>
+         </form>
+      </app-card>
+   </div>
+</div>

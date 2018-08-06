@@ -40,22 +40,14 @@ const MENUITEMS = [
         icon: 'ti-home'
       },
       {
-        state: 'basic',
-        name: 'Basic Components',
+        state: 'cadastro',
+        name: 'Cadastros',
         type: 'sub',
         icon: 'ti-layout-grid2-alt',
         children: [
           {
-            state: 'breadcrumb',
-            name: 'Breadcrumbs'
-          },
-          {
-            state: 'button',
-            name: 'Button'
-          },
-          {
-            state: 'typography',
-            name: 'Typography'
+            state: 'usuario',
+            name: 'Usuários'
           }
         ]
       },

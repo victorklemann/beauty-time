@@ -18,6 +18,9 @@ export const AppRoutes: Routes = [{
       path: 'basic',
       loadChildren: './components/basic/basic.module#BasicModule'
     }, {
+      path: 'cadastro',
+      loadChildren: './cadastro/cadastro.module#CadastroModule'
+    }, {
       path: 'advance',
       loadChildren: './components/advance/advance.module#AdvanceModule'
     }, {

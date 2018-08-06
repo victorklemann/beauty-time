@@ -45,8 +45,8 @@ var MENUITEMS = [
                         name: 'Alert'
                     },
                     {
-                        state: 'breadcrumb',
-                        name: 'Breadcrumbs'
+                        state: 'usuario',
+                        name: 'Usuários'
                     },
                     {
                         state: 'button',

@@ -104,11 +104,6 @@
                   </li>
                 </ul>
               </li>
-              <li>
-                <div class="upgrade-button-header f-left">
-                  <a href="https://themeforest.net/item/flat-able-angular-4-admin-template/20664478?ref=phoenixcoded" target="_blank" class="btn btn-primary btn-sm txt-white p-t-10 p-b-10">Upgrade To Pro</a>
-                </div>
-              </li>
             </ul>
           </div>
         </div>
@@ -141,7 +136,6 @@
             </div>
             <div>
             <div *ngFor="let asideItems of menuItems.getAll()">
-              <div class="pcoded-navigatio-lavel" menu-title-theme="theme5" >{{asideItems.label}}</div>
               <ul class="pcoded-item pcoded-left-item" item-border="none" item-border-style="solid" subitem-border="solid" *ngFor="let asideItem of asideItems.main" appAccordionLink group="{{asideItem.state}}">
                 <li [routerLinkActive]="['active']" *ngIf="asideItem.type === 'external'" appAccordionLink group="{{asideItem.state}}">
                   <a href="{{asideItem.external}}" target="{{asideItem.target ? '_blank' : '_self'}}" appAccordionToggle>
