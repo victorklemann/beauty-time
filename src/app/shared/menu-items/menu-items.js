@@ -12,12 +12,6 @@ var MENUITEMS = [
         label: 'Navigation',
         main: [
             {
-                state: 'dashboard',
-                name: 'Dashboard',
-                type: 'link',
-                icon: 'ti-home'
-            },
-            {
                 state: 'widget',
                 name: 'Widget',
                 type: 'link',

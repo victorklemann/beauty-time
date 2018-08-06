@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppRoutes } from './app.routing';
@@ -28,7 +27,6 @@ import {LocationStrategy, PathLocationStrategy} from '@angular/common';
     BrowserAnimationsModule,
     SharedModule,
     RouterModule.forRoot(AppRoutes),
-    FormsModule,
     HttpModule,
     ScrollModule
   ],

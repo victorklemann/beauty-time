@@ -1,0 +1,68 @@
+<div class="row">
+   <div class="col-sm-12">
+      <app-card>
+         <form>
+            <div class="form-group">
+               <label class="col-form-label">Código</label>
+               <div class="row">
+                  <div class="col-md-12">
+                     <input type="text" class="form-control">
+                  </div>
+               </div>
+
+               <label class="col-form-label">Nome</label>
+               <div class="row">
+                  <div class="col-sm-12">
+                     <input type="text" class="form-control">
+                  </div>
+               </div>
+
+               <label class="col-form-label">Descrição</label>
+               <div class="row">
+                  <div class="col-sm-12">
+                     <textarea rows="5" cols="5" class="form-control"></textarea>
+                  </div>
+               </div>
+
+               <label class="col-form-label">Preço</label>
+               <div class="row">
+                  <div class="col-sm-4">
+                     <input type="text" class="form-control">
+                  </div>
+               </div>
+
+               <label class="col-form-label">Duração</label>
+               <div class="row">
+                  <div class="col-sm-2">
+                     <input type="number" class="form-control">
+                  </div>
+                  <div class="col-sm-10">
+                     <select name="select" class="form-control">
+                        <option value="opt1">- Selecione -</option>
+                        <option value="opt2">Horas</option>
+                        <option value="opt2">Minutos</option>
+                     </select>
+                  </div>
+               </div>
+
+               <br />
+
+               <div class="row">
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                     <a class="btn btn-primary btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Novo</a>
+                  </div>
+
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                     <a class="btn btn-success btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Salvar</a>
+                  </div>
+
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                     <a class="btn btn-danger btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Cancelar</a>
+                  </div>
+               </div>
+
+            </div>
+         </form>
+      </app-card>
+   </div>
+</div>

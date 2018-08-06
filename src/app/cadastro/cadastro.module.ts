@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { CadastroComponent } from './cadastro.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { UsuarioNovoComponent } from './usuario/usuario-novo/usuario-novo.component';
+import { ServicoComponent } from './servico/servico.component';
+import { ServicoNovoComponent } from './servico/servico-novo/servico-novo.component';
 
 @NgModule({
   imports: [
@@ -18,7 +20,9 @@ import { UsuarioNovoComponent } from './usuario/usuario-novo/usuario-novo.compon
   declarations: [
     CadastroComponent,
     UsuarioComponent,
-    UsuarioNovoComponent
+    UsuarioNovoComponent,
+    ServicoComponent,
+    ServicoNovoComponent
   ]
 })
 export class CadastroModule { }
