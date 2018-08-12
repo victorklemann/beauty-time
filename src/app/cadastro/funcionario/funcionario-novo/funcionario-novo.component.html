@@ -1,0 +1,130 @@
+<div class="row">
+   <div class="col-sm-12">
+      <app-card>
+         <form>
+            <div class="form-group">
+               <label class="col-form-label">Código</label>
+               <div class="row">
+                  <div class="col-md-12">
+                     <input type="text" class="form-control">
+                  </div>
+               </div>
+
+               <label class="col-form-label">Usuário</label>
+               <div class="row">
+                  <div class="col-md-12">
+                     <select name="select" class="form-control">
+                        <option value="opt1">- Selecione -</option>
+                        <option value="opt2">Type 2</option>
+                     </select>
+                  </div>
+               </div>
+
+               <label class="col-form-label">Tipo</label>
+               <div class="row">
+                  <div class="col-md-12">
+                     <select name="select" class="form-control">
+                        <option value="opt1">- Selecione -</option>
+                        <option value="opt2">Funcionário</option>
+                        <option value="opt2">Administrador</option>
+                     </select>
+                  </div>
+               </div>
+
+               <br />
+
+               <div class="row">
+                  <div class="col-sm-6">
+                     <div class="card card-border-primary">
+                        <div class="card-header">
+                           <h5>Expediente</h5>
+                        </div>
+
+                        <div class="card-block">
+                           <div class="form-group">
+                              <div class="row">
+                                 <label class="col-form-label">A partir de</label>
+                                 <div class="col-sm-4">
+                                    <input type="text" class="form-control">
+                                 </div>
+
+                                 <label class="col-form-label">até</label>
+                                 <div class="col-sm-4">
+                                    <input type="text" class="form-control">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                     <div class="card card-border-primary">
+                        <div class="card-header">
+                           <h5>Intervalo</h5>
+                        </div>
+
+                        <div class="card-block">
+                           <div class="form-group">
+                              <div class="row">
+                                 <label class="col-form-label">A partir de</label>
+                                 <div class="col-sm-4">
+                                    <input type="text" class="form-control">
+                                 </div>
+
+                                 <label class="col-form-label">até</label>
+                                 <div class="col-sm-4">
+                                    <input type="text" class="form-control">
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <br />
+
+               <div class="card card-border-primary">
+                  <div class="card-header">
+                     <h5>Serviços</h5>
+                  </div>
+
+                  <div class="card-block">
+                     <div class="row">
+                        <div class="col-sm-12 text-center">
+                           <a class="btn btn-primary" routerLinkActive="detail-active" [routerLink]="['novo']">Novo</a>
+                        </div>
+                     </div>
+
+                     <div class="form-group">
+                        <div class="row" *ngFor="let item of [0,1,2]">
+                           <div class="col-sm-6">
+                              <input class="checkbox-fade fade-in-primary" type="checkbox">
+                              <label class="col-form-label">Serviço {{item}}</label>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+
+               <div class="row">
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                     <a class="btn btn-primary btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Novo</a>
+                  </div>
+
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                     <a class="btn btn-success btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Salvar</a>
+                  </div>
+
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                     <a class="btn btn-danger btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Cancelar</a>
+                  </div>
+               </div>
+
+            </div>
+         </form>
+      </app-card>
+   </div>
+</div>

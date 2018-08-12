@@ -14,6 +14,9 @@ export const AppRoutes: Routes = [{
     }, {
       path: 'cadastro',
       loadChildren: './cadastro/cadastro.module#CadastroModule'
+    }, {
+      path: 'profile',
+      loadChildren: './profile/profile.module#ProfileModule'
     }
   ]
 }, {
@@ -23,6 +26,10 @@ export const AppRoutes: Routes = [{
     {
       path: 'home',
       loadChildren: './home/home.module#HomeModule'
+    },
+    {
+      path: 'sign-in',
+      loadChildren: './sign-in/sign-in.module#SignInModule'
     }
   ]
 }, {

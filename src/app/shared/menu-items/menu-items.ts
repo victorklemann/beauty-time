@@ -34,6 +34,13 @@ const MENUITEMS = [
     label: 'Layout',
     main: [
       {
+        state: 'sign-in',
+        name: 'Usuario',
+        type: 'link',
+        icon: 'ti-home',
+        target: true
+      },
+      {
         state: 'home',
         name: 'Home',
         type: 'link',
@@ -53,6 +60,10 @@ const MENUITEMS = [
           {
             state: 'servico',
             name: 'Serviços'
+          },
+          {
+            state: 'funcionario',
+            name: 'Funcionários'
           }
         ]
       }
