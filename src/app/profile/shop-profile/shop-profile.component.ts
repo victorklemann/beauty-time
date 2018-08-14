@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { NgForm } from '@angular/forms';
+
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { Estabelecimento } from './shop-profile.model';
 
@@ -12,9 +13,12 @@ export class ShopProfileComponent implements OnInit {
 
   @Input() estabelecimento: Estabelecimento
 
-  constructor(private angularFire: AngularFireDatabase) { }
+  constructor(db: AngularFireDatabase) { 
+    
+  }
 
   ngOnInit() {
+    
   }
 
   // form_submit(f: NgForm) {

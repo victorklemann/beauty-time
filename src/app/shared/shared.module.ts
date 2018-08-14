@@ -34,8 +34,7 @@ import {ClickOutsideModule} from 'ng-click-outside';
       TagInputModule,
       AgmCoreModule.forRoot({apiKey: 'AIzaSyCE0nvTeHBsiQIrbpMVTe489_O5mwyqofk'}),
       Ng2GoogleChartsModule,
-      ClickOutsideModule,
-      GoTopButtonModule
+      ClickOutsideModule
   ],
   declarations: [
       AccordionAnchorDirective,

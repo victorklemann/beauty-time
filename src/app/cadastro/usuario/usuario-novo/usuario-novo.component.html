@@ -1,33 +1,41 @@
 <div class="row">
    <div class="col-sm-12">
       <app-card>
-         <form>
+         <form #form="ngForm" novalidate (submit)="salvar(form)">
+            {{form.value | json}}
             <div class="form-group">
                <label class="col-form-label">Usuário</label>
                <div class="row">
                   <div class="col-md-12">
-                     <input type="text" class="form-control">
+                     <input type="text" class="form-control" name="usuario" ngModel>
                   </div>
                </div>
 
                <label class="col-form-label">Nome</label>
                <div class="row">
                   <div class="col-sm-12">
-                     <input type="text" class="form-control">
+                     <input type="text" class="form-control" name="nome" ngModel>
                   </div>
                </div>
 
                <label class="col-form-label">E-mail</label>
                <div class="row">
                   <div class="col-sm-12">
-                     <input type="email" class="form-control">
+                     <input type="email" class="form-control" name="email" ngModel>
                   </div>
                </div>
 
                <label class="col-form-label">Telefone</label>
                <div class="row">
                   <div class="col-sm-12">
-                     <input type="text" class="form-control">
+                     <input type="text" class="form-control" name="telefone" ngModel>
+                  </div>
+               </div>
+
+               <label class="col-form-label">Senha</label>
+               <div class="row">
+                  <div class="col-sm-12">
+                     <input type="password" class="form-control" name="senha" ngModel>
                   </div>
                </div>
 
@@ -43,21 +51,21 @@
                         <label class="col-form-label">CEP</label>
                         <div class="row">
                            <div class="col-sm-8">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" name="cep" ngModel>
                            </div>
                         </div>
 
                         <label class="col-form-label">Endereço</label>
                         <div class="row">
                            <div class="col-sm-8">
-                              <input type="text" class="form-control">
+                              <input type="text" class="form-control" name="endereco" ngModel>
                            </div>
                         </div>
 
                         <div class="row">
                            <div class="col-sm-4">
                               <label class="col-form-label">Estado</label>
-                              <select name="select" class="form-control">
+                              <select name="select" class="form-control" name="estado" ngModel>
                                  <option value="opt1">- Selecione -</option>
                                  <option value="opt2">Type 2</option>
                               </select>
@@ -65,7 +73,7 @@
 
                            <div class="col-sm-8">
                               <label class="col-form-label">Cidade</label>
-                              <select name="select" class="form-control">
+                              <select name="select" class="form-control" name="cidade" ngModel>
                                  <option value="opt1">- Selecione -</option>
                                  <option value="opt2">Type 2</option>
                               </select>
@@ -83,7 +91,7 @@
                   </div>
 
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <a class="btn btn-success btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Salvar</a>
+                     <button class="btn btn-success btn-block" type="submit">Salvar</button>
                   </div>
 
                   <div class="col-sm-4 col-md-4 col-lg-4">
