@@ -1,41 +1,41 @@
 <div class="row">
    <div class="col-sm-12">
+      Usuario: {{usuario.nome}}
       <app-card>
-         <form #form="ngForm" novalidate (submit)="salvar(form)">
-            {{form.value | json}}
+         <form #form="ngForm" novalidate>
             <div class="form-group">
                <label class="col-form-label">Usuário</label>
                <div class="row">
                   <div class="col-md-12">
-                     <input type="text" class="form-control" name="usuario" ngModel>
+                     <input type="text" class="form-control" name="usuario" [(ngModel)]="usuario.usuario">
                   </div>
                </div>
 
                <label class="col-form-label">Nome</label>
                <div class="row">
                   <div class="col-sm-12">
-                     <input type="text" class="form-control" name="nome" ngModel>
+                     <input type="text" class="form-control" name="nome" [(ngModel)]="usuario.nome">
                   </div>
                </div>
 
                <label class="col-form-label">E-mail</label>
                <div class="row">
                   <div class="col-sm-12">
-                     <input type="email" class="form-control" name="email" ngModel>
+                     <input type="email" class="form-control" name="email" [(ngModel)]="usuario.email">
                   </div>
                </div>
 
                <label class="col-form-label">Telefone</label>
                <div class="row">
                   <div class="col-sm-12">
-                     <input type="text" class="form-control" name="telefone" ngModel>
+                     <input type="text" class="form-control" name="telefone" [(ngModel)]="usuario.telefone">
                   </div>
                </div>
 
                <label class="col-form-label">Senha</label>
                <div class="row">
                   <div class="col-sm-12">
-                     <input type="password" class="form-control" name="senha" ngModel>
+                     <input type="password" class="form-control" name="senha" [(ngModel)]="usuario.senha">
                   </div>
                </div>
 
@@ -51,14 +51,14 @@
                         <label class="col-form-label">CEP</label>
                         <div class="row">
                            <div class="col-sm-8">
-                              <input type="text" class="form-control" name="cep" ngModel>
+                              <input type="text" class="form-control" name="cep" [(ngModel)]="usuario.cep">
                            </div>
                         </div>
 
                         <label class="col-form-label">Endereço</label>
                         <div class="row">
                            <div class="col-sm-8">
-                              <input type="text" class="form-control" name="endereco" ngModel>
+                              <input type="text" class="form-control" name="endereco" [(ngModel)]="usuario.endereco">
                            </div>
                         </div>
 
@@ -91,12 +91,14 @@
                   </div>
 
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <button class="btn btn-success btn-block" type="submit">Salvar</button>
+                     <button class="btn btn-success btn-block" (click)="salvar(form)">Salvar</button>
                   </div>
 
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <a class="btn btn-danger btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Cancelar</a>
+                     <a class="btn btn-danger btn-block" routerLinkActive="detail-active" [routerLink]="['/cadastro/usuario']">Cancelar</a>
                   </div>
+
+                  <button class="btn btn-primary waves-effect" (click)="notification.showDefaultMessage('TESTE DE VICTOR')">Center Center</button>
                </div>
 
             </div>
@@ -104,3 +106,5 @@
       </app-card>
    </div>
 </div>
+
+<ng2-toasty></ng2-toasty>

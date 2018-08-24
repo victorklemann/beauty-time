@@ -15,7 +15,7 @@ import {SpinnerComponent} from '../spinner/spinner.component';
 import {GoTopButtonModule} from 'ng2-go-top-button';
 import {ScrollModule} from '../scroll/scroll.module';
 import {ToastyModule} from 'ng2-toasty';
-import {SimpleNotificationsModule} from 'angular2-notifications';
+import {SimpleNotificationsModule} from 'angular2-notifications/dist';
 import {TagInputModule} from 'ngx-chips';
 import {AgmCoreModule} from '@agm/core';
 import {Ng2GoogleChartsModule} from 'ng2-google-charts';

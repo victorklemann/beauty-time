@@ -1,8 +1,8 @@
 export const FirebaseConfig = {
-   apiKey: "AIzaSyB-I3vB8nuo8_Gyk8ESyLjHGllVF5GX4DQ",
-   authDomain: "beaty-time-d43a1.firebaseapp.com",
-   databaseURL: "https://beaty-time-d43a1.firebaseio.com",
-   projectId: "beaty-time-d43a1",
-   storageBucket: "simpleapprealtime-ef5c5.appspot.com",
-   messagingSenderId: "797595451568"
+   apiKey: "AIzaSyAiW8GEBDO1Ta0YkvKsRsPkcvNR3Vjwc9Q",
+   authDomain: "beauty-time-6562a.firebaseapp.com",
+   databaseURL: "https://beauty-time-6562a.firebaseio.com",
+   projectId: "beauty-time-6562a",
+   storageBucket: "beauty-time-6562a.appspot.com",
+   messagingSenderId: "495522251907"
 };

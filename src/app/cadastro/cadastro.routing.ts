@@ -19,6 +19,7 @@ export const CadastroRoutes: Routes = [
         children: [
             { path: 'usuario', component: UsuarioComponent, data: { breadcrumb: 'Usuário', status: false } },
             { path: 'usuario/novo', component: UsuarioNovoComponent, data: { breadcrumb: 'Usuário', status: false } },
+            { path: 'usuario/novo/:key', component: UsuarioNovoComponent, data: { breadcrumb: 'Usuário', status: false } },
             { path: 'servico', component: ServicoComponent, data: { breadcrumb: 'Serviço', status: false } },
             { path: 'servico/novo', component: ServicoNovoComponent, data: { breadcrumb: 'Serviço', status: false } },
             { path: 'funcionario', component: FuncionarioComponent, data: { breadcrumb: 'Funcionário', status: false }},

@@ -2,6 +2,7 @@ import { Cidade } from "../../general/cidade.model";
 
 export interface Usuario {
     
+   key: string
    usuario: string
    nome: string
    email: string

@@ -18,6 +18,7 @@ import { ScrollModule } from './scroll/scroll.module';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FirebaseConfig } from '../environments/firebase.config';
 import { FormsModule } from '@angular/forms';
+import { DataBaseService } from './general/database.service';
 
 @NgModule({
   declarations: [
@@ -39,8 +40,7 @@ import { FormsModule } from '@angular/forms';
     AngularFireDatabaseModule
   ],
   exports: [ScrollModule],
-  providers: [
-      { provide: LocationStrategy, useClass: PathLocationStrategy }
+  providers: [ DataBaseService, { provide: LocationStrategy, useClass: PathLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

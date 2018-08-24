@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { AngularFireDatabase } from 'angularfire2/database';
 import { Usuario } from '../usuario.model';
+import { UsuarioService } from '../usuario.service';
+import { ActivatedRoute } from '@angular/router';
+import { NotificationsComponent } from '../../../notifications/notifications.component';
 
 @Component({
    selector: 'app-usuario-novo',
@@ -10,25 +12,23 @@ import { Usuario } from '../usuario.model';
 })
 export class UsuarioNovoComponent implements OnInit {
 
-   constructor(private angularFire: AngularFireDatabase) { }
+   constructor(private usuarioService: UsuarioService,
+               private route: ActivatedRoute,
+               private notification: NotificationsComponent) { }
 
-   private usuario = {} as Usuario;
+   private usuario = {} as Usuario
 
-   ngOnInit() {}
+   ngOnInit() {
+      let route = this.route.snapshot.params['key']
+      if (route != undefined) {
+         this.usuarioService.usuarioById(route).subscribe(usuario => this.usuario = usuario)
+      }
+   }
 
    salvar(f: NgForm) {
-      this.usuario.usuario = f.controls.usuario.value
-      this.usuario.nome = f.controls.nome.value
-      this.usuario.email = f.controls.email.value
-      this.usuario.telefone = f.controls.telefone.value
-      this.usuario.senha = f.controls.senha.value
-      this.usuario.cep = f.controls.cep.value
-      this.usuario.endereco = f.controls.endereco.value
-      // this.usuario.cidade = f.controls.cidade.value
-      
-      this.angularFire.list("usuarios").push(this.usuario)
-                      .then((t: any) => console.log('dados gravados: ' + t.key)), 
-                            (e: any) => console.log(e.message);
+      this.usuarioService.save(this.usuario)
+      this.notification.showSuccessMessage('SHOW');
+      // this.router.navigate(['/cadastro/usuario'])
    }
 
 }
