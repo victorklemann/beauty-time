@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { Usuario } from '../usuario.model';
 import { UsuarioService } from '../usuario.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsComponent } from '../../../notifications/notifications.component';
 
 @Component({
@@ -14,6 +14,7 @@ export class UsuarioNovoComponent implements OnInit {
 
    constructor(private usuarioService: UsuarioService,
                private route: ActivatedRoute,
+               private router: Router,
                private notification: NotificationsComponent) { }
 
    private usuario = {} as Usuario
@@ -28,7 +29,7 @@ export class UsuarioNovoComponent implements OnInit {
    salvar(f: NgForm) {
       this.usuarioService.save(this.usuario)
       this.notification.showSuccessMessage('SHOW');
-      // this.router.navigate(['/cadastro/usuario'])
+      this.router.navigate(['/cadastro/usuario']);
    }
 
 }

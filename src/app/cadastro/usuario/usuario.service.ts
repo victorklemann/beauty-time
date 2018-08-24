@@ -15,6 +15,10 @@ export class UsuarioService {
       this.refresh()
    }
 
+   valueChanges() {
+      return this.afd.list(this.path).valueChanges()
+   }
+
    refresh() {
       this.list = this.afd.list(this.path)
    }
@@ -23,8 +27,9 @@ export class UsuarioService {
       this.dbService.save(this.list, usuario)
    }
 
-   delete(usuario: Usuario) {
-      this.dbService.delete(this.afd.object(`/${this.path}/${usuario.key}`))
+   delete(keyUsuario: string) {
+      this.list.remove(keyUsuario).then(_ => console.log('item deleted!'));
+      // this.dbService.delete(this.afd.object(`/${this.path}/${usuario.key}`))
    }
    
    usuarios(): Observable<Usuario[]> {

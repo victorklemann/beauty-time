@@ -24,7 +24,7 @@
                      </thead>
 
                      <tbody>
-                        <tr *ngFor="let usuario of usuarios">
+                        <tr *ngFor="let usuario of usuarios | async">
                            <td>{{usuario.nome}}</td>
                            <td>{{usuario.email}}</td>
                            <td>{{usuario.telefone}}</td>
@@ -32,7 +32,7 @@
                               <button class="btn btn-success btn-mini" [routerLink]="['novo', usuario.key]"><i class="ti-pencil"></i></button>
                            </td>
                            <td>
-                              <button class="btn btn-danger btn-mini" (click)="delete(usuario)"><i class="ti-close"></i></button>
+                              <button class="btn btn-danger btn-mini" (click)="delete(usuario.key)"><i class="ti-close"></i></button>
                            </td>
                         </tr>
                      </tbody>

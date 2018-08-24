@@ -19,6 +19,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FirebaseConfig } from '../environments/firebase.config';
 import { FormsModule } from '@angular/forms';
 import { DataBaseService } from './general/database.service';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,10 @@ import { DataBaseService } from './general/database.service';
     AngularFireDatabaseModule
   ],
   exports: [ScrollModule],
-  providers: [ DataBaseService, { provide: LocationStrategy, useClass: PathLocationStrategy }
+  providers: [ 
+    DataBaseService, 
+    { provide: LocationStrategy, useClass: PathLocationStrategy },
+    NotificationsComponent
   ],
   bootstrap: [AppComponent]
 })
