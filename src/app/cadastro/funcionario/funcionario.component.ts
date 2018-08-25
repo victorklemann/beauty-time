@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { FuncionarioService } from './funcionario.service';
 
 @Component({
   selector: 'app-funcionario',
@@ -6,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FuncionarioComponent implements OnInit {
 
-  constructor() { }
+  funcionarios: Observable<any[]>;
 
-  ngOnInit() {
-  }
+   constructor(private funcionarioService: FuncionarioService) { }
+
+   ngOnInit() {
+      this.funcionarios = this.funcionarioService.funcionarios();
+   }
+
+   delete(keyFuncionario: string) {
+      this.funcionarioService.delete(keyFuncionario)
+      this.funcionarios = this.funcionarioService.funcionarios()
+   }
 
 }

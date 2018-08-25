@@ -22,8 +22,10 @@ export const CadastroRoutes: Routes = [
             { path: 'usuario/novo/:key', component: UsuarioNovoComponent, data: { breadcrumb: 'Usuário', status: false } },
             { path: 'servico', component: ServicoComponent, data: { breadcrumb: 'Serviço', status: false } },
             { path: 'servico/novo', component: ServicoNovoComponent, data: { breadcrumb: 'Serviço', status: false } },
-            { path: 'funcionario', component: FuncionarioComponent, data: { breadcrumb: 'Funcionário', status: false }},
-            { path: 'funcionario/novo', component: FuncionarioNovoComponent, data: { breadcrumb: 'Funcionário', status: false }}
+            { path: 'servico/novo/:key', component: ServicoNovoComponent, data: { breadcrumb: 'Serviço', status: false } },
+            { path: 'funcionario', component: FuncionarioComponent, data: { breadcrumb: 'Funcionário', status: false } },
+            { path: 'funcionario/novo', component: FuncionarioNovoComponent, data: { breadcrumb: 'Funcionário', status: false }},
+            { path: 'funcionario/novo/:key', component: FuncionarioNovoComponent, data: { breadcrumb: 'Funcionário', status: false }}
         ]
     }
 ];

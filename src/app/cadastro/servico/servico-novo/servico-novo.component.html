@@ -1,46 +1,44 @@
 <div class="row">
    <div class="col-sm-12">
       <app-card>
-         <form>
+         <form #form="ngForm" novalidate>
             <div class="form-group">
                <label class="col-form-label">Código</label>
                <div class="row">
                   <div class="col-md-12">
-                     <input type="text" class="form-control">
+                     <input type="text" class="form-control" name="codigo" [(ngModel)]="servico.codigo">
                   </div>
                </div>
 
                <label class="col-form-label">Nome</label>
                <div class="row">
                   <div class="col-sm-12">
-                     <input type="text" class="form-control">
+                     <input type="text" class="form-control" name="nome" [(ngModel)]="servico.nome">
                   </div>
                </div>
 
                <label class="col-form-label">Descrição</label>
                <div class="row">
                   <div class="col-sm-12">
-                     <textarea rows="5" cols="5" class="form-control"></textarea>
+                     <textarea rows="5" cols="5" class="form-control" name="descricao" [(ngModel)]="servico.descricao"></textarea>
                   </div>
                </div>
 
                <label class="col-form-label">Preço</label>
                <div class="row">
                   <div class="col-sm-4">
-                     <input type="text" class="form-control">
+                     <input type="text" class="form-control" name="preco" [(ngModel)]="servico.preco">
                   </div>
                </div>
 
                <label class="col-form-label">Duração</label>
                <div class="row">
                   <div class="col-sm-2">
-                     <input type="number" class="form-control">
+                     <input type="number" class="form-control" name="duracao" [(ngModel)]="servico.duracao">
                   </div>
                   <div class="col-sm-10">
-                     <select name="select" class="form-control">
-                        <option value="opt1">- Selecione -</option>
-                        <option value="opt2">Horas</option>
-                        <option value="opt2">Minutos</option>
+                     <select name="select" class="form-control" [(ngModel)]="servico.tipoDuracao">
+                        <option *ngFor="let tipo of tiposDuracao" value="{{tipo}}">{{tipo}}</option>
                      </select>
                   </div>
                </div>
@@ -49,15 +47,15 @@
 
                <div class="row">
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <a class="btn btn-primary btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Novo</a>
+                     <button class="btn btn-primary btn-block" (click)="clear(form)">Novo</button>
                   </div>
 
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <a class="btn btn-success btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Salvar</a>
+                     <button class="btn btn-success btn-block" (click)="salvar(form)">Salvar</button>
                   </div>
 
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <a class="btn btn-danger btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Cancelar</a>
+                     <a class="btn btn-danger btn-block" routerLinkActive="detail-active" [routerLink]="['/cadastro/servico']">Cancelar</a>
                   </div>
                </div>
 

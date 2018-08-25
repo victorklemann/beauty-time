@@ -28,8 +28,12 @@ export class UsuarioNovoComponent implements OnInit {
 
    salvar(f: NgForm) {
       this.usuarioService.save(this.usuario)
-      this.notification.showSuccessMessage('SHOW');
+      this.notification.showSuccessMessage('Salvo com sucesso!');
       this.router.navigate(['/cadastro/usuario']);
+   }
+
+   clear(f: NgForm) {
+      this.usuario = {} as Usuario;
    }
 
 }

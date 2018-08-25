@@ -26,20 +26,16 @@
                      </thead>
 
                      <tbody>
-                        <tr>
-                           <td>1</td>
-                           <td>Víctor</td>
-                           <td>victorvklemann@gmail.com</td>
-                           <td>(47) 9 9730 - 7944</td>
+                        <tr *ngFor="let funcionario of funcionarios | async">
+                           <td>{{funcionario.codigo}}</td>
+                           <td>{{funcionario.nome}}</td>
+                           <td>{{funcionario.email + ' ' + funcionario.tipoDuracao}}</td>
+                           <td>{{funcionario.telefone}}</td>
                            <td>
-                              <button class="btn btn-success btn-mini">
-                                 <i class="ti-pencil"></i>
-                              </button>
+                              <button class="btn btn-success btn-mini" [routerLink]="['novo', funcionario.key]"><i class="ti-pencil"></i></button>
                            </td>
                            <td>
-                              <button class="btn btn-danger btn-mini">
-                                 <i class="ti-close"></i>
-                              </button>
+                              <button class="btn btn-danger btn-mini" (click)="delete(funcionario.key)"><i class="ti-close"></i></button>
                            </td>
                         </tr>
                      </tbody>

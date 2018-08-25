@@ -1,12 +1,12 @@
 <div class="row">
    <div class="col-sm-12">
       <app-card>
-         <form>
+         <form #form="ngForm" novalidate>
             <div class="form-group">
                <label class="col-form-label">Código</label>
                <div class="row">
                   <div class="col-md-12">
-                     <input type="text" class="form-control">
+                     <input type="text" class="form-control" name="codigo" [(ngModel)]="funcionario.codigo">
                   </div>
                </div>
 
@@ -45,12 +45,12 @@
                               <div class="row">
                                  <label class="col-form-label">A partir de</label>
                                  <div class="col-sm-4">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="expedienteDe" [(ngModel)]="funcionario.expedienteDe">
                                  </div>
 
                                  <label class="col-form-label">até</label>
                                  <div class="col-sm-4">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="expedienteAte" [(ngModel)]="funcionario.expedienteAte">
                                  </div>
                               </div>
                            </div>
@@ -69,12 +69,12 @@
                               <div class="row">
                                  <label class="col-form-label">A partir de</label>
                                  <div class="col-sm-4">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="intervaloDe" [(ngModel)]="funcionario.intervaloDe">
                                  </div>
 
                                  <label class="col-form-label">até</label>
                                  <div class="col-sm-4">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" name="intervaloAte" [(ngModel)]="funcionario.intervaloAte">
                                  </div>
                               </div>
                            </div>
@@ -111,15 +111,15 @@
 
                <div class="row">
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <a class="btn btn-primary btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Novo</a>
+                     <button class="btn btn-primary btn-block" (click)="clear(form)">Novo</button>
                   </div>
 
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <a class="btn btn-success btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Salvar</a>
+                     <button class="btn btn-success btn-block" (click)="salvar(form)">Salvar</button>
                   </div>
 
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <a class="btn btn-danger btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Cancelar</a>
+                        <a class="btn btn-danger btn-block" routerLinkActive="detail-active" [routerLink]="['/cadastro/funcionario']">Cancelar</a>
                   </div>
                </div>
 

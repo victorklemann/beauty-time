@@ -1,6 +1,5 @@
 <div class="row">
    <div class="col-sm-12">
-      Usuario: {{usuario.nome}}
       <app-card>
          <form #form="ngForm" novalidate>
             <div class="form-group">
@@ -87,7 +86,7 @@
 
                <div class="row">
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <a class="btn btn-primary btn-block" routerLinkActive="detail-active" [routerLink]="['novo']">Novo</a>
+                     <button class="btn btn-primary btn-block" (click)="clear(form)">Novo</button>
                   </div>
 
                   <div class="col-sm-4 col-md-4 col-lg-4">

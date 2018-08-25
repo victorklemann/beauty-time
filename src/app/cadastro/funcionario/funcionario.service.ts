@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core'
 
 import { Observable } from 'rxjs/Observable'
-import { Usuario } from './usuario.model';
+import { Funcionario } from './funcionario.model';
 import { DataBaseService } from '../../general/database.service';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
-export class UsuarioService {
+export class FuncionarioService {
 
-   path: string = 'usuarios'
-   list: AngularFireList<Usuario[]>
+   path: string = 'funcionarios'
+   list: AngularFireList<Funcionario[]>
 
    constructor(private afd: AngularFireDatabase, private dbService: DataBaseService) { 
       this.refresh()
@@ -19,19 +19,19 @@ export class UsuarioService {
       this.list = this.afd.list(this.path)
    }
 
-   save(usuario: Usuario) {
-      this.dbService.save(this.list, usuario)
+   save(funcionario: Funcionario) {
+      this.dbService.save(this.list, funcionario)
    }
 
-   delete(keyUsuario: string) {
-      this.dbService.delete(this.list, keyUsuario)
+   delete(keyFuncionario: string) {
+      this.dbService.delete(this.list, keyFuncionario)
    }
    
-   usuarios() {
+   funcionarios() {
       return this.dbService.list(this.list);
    }
 
-   usuarioById(key: string): Observable<Usuario> {
+   funcionarioById(key: string): Observable<Funcionario> {
       return this.dbService.objectById(this.afd.object(`/${this.path}/${key}`))
    }
 

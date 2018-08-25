@@ -1,49 +1,49 @@
 <div class="row">
-    <div class="col-sm-12">
-       <app-card>
- 
-          <div class="row">
-             <div class="col-sm-12 text-center">
-                <a class="btn btn-primary" routerLinkActive="detail-active" [routerLink]="['novo']">Novo</a>
-             </div>
-          </div>
- 
-          <br />
- 
-          <div class="row">
-             <div class="col-sm-12">
-                <div class="table-responsive">
-                   <table class="table table-hover">
-                      <thead>
-                         <tr>
-                            <th>Código</th>
-                            <th>Nome</th>
-                            <th>Duração</th>
-                            <th>Preço</th>
-                            <th>Editar</th>
-                            <th>Excluir</th>
-                         </tr>
-                      </thead>
- 
-                      <tbody>
-                         <tr>
-                            <td>1</td>
-                            <td>Corte Masculino</td>
-                            <td>30 minutos</td>
-                            <td>R$ 27,50</td>
-                            <td>
-                               <button class="btn btn-success btn-mini"><i class="ti-pencil"></i></button>
-                            </td>
-                            <td>
-                               <button class="btn btn-danger btn-mini"><i class="ti-close"></i></button>
-                            </td>
-                         </tr>
-                      </tbody>
-                   </table>
-                </div>
-             </div>
-          </div>
- 
-       </app-card>
-    </div>
- </div>
+   <div class="col-sm-12">
+
+      <app-card>
+         <div class="row">
+            <div class="col-sm-12 text-center">
+               <a class="btn btn-primary" routerLinkActive="detail-active" [routerLink]="['novo']">Novo</a>
+            </div>
+         </div>
+
+         <br />
+
+         <div class="row">
+            <div class="col-sm-12">
+               <div class="table-responsive">
+                  <table class="table table-hover">
+                     <thead>
+                        <tr>
+                           <th>Código</th>
+                           <th>Nome</th>
+                           <th>Duração</th>
+                           <th>Preço</th>
+                           <th>Editar</th>
+                           <th>Excluir</th>
+                        </tr>
+                     </thead>
+
+                     <tbody>
+                        <tr *ngFor="let servico of servicos | async">
+                           <td>{{servico.codigo}}</td>
+                           <td>{{servico.nome}}</td>
+                           <td>{{servico.duracao + ' ' + servico.tipoDuracao}}</td>
+                           <td>{{servico.preco}}</td>
+                           <td>
+                              <button class="btn btn-success btn-mini" [routerLink]="['novo', servico.key]"><i class="ti-pencil"></i></button>
+                           </td>
+                           <td>
+                              <button class="btn btn-danger btn-mini" (click)="delete(servico.key)"><i class="ti-close"></i></button>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+
+      </app-card>
+   </div>
+</div>

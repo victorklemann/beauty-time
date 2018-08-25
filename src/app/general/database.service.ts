@@ -18,22 +18,22 @@ export class DataBaseService {
       }
    }
 
-   delete(object: any) {
-      object.remove().catch(ErrorHandler.handleError)
+   delete(objects: AngularFireList<any[]>, key: string) {
+      objects.remove(key);
    }
 
    list(objects: AngularFireList<any[]>): Observable<any[]> {
       let data = []
       objects.snapshotChanges().subscribe(actions => {
          actions.map(a => {
-            data.push(_.extend(a.payload.val(), { key: a.payload.key }))
+            data.push(_.extend(a.payload.val(), { key: a.payload.key }));
          });
       });
       return Observable.of(data);
    }
 
    objectById(object: AngularFireObject<any>): Observable<any> {
-      return object.snapshotChanges().map(response => _.extend(response.payload.val(), { key: response.payload.key }))
+      return object.snapshotChanges().map(response => _.extend(response.payload.val(), { key: response.payload.key }));
    }
 
 }

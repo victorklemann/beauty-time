@@ -7,9 +7,6 @@ import { ToastyService, ToastyConfig, ToastOptions } from 'ng2-toasty';
 export class NotificationsComponent {
 
    constructor(private toastyService: ToastyService, private toastyConfig: ToastyConfig) {
-      // Assign the selected theme name to the `theme` property of the instance of ToastyConfig. 
-      // Possible values: default, bootstrap, material
-      this.toastyConfig.theme = 'material';
       this.toastyConfig.showClose = true;
       this.toastyConfig.timeout = 5000;
    }
