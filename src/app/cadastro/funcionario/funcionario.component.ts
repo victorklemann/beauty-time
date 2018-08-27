@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import * as moment from 'moment';
 
 import { FuncionarioService } from './funcionario.service';
 

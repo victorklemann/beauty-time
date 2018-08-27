@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsComponent } from '../../../notifications/notifications.component';
 
 import { Funcionario } from '../funcionario.model';
 import { FuncionarioService } from '../funcionario.service';
-import { TIPOS_USUARIO } from '../funcionario.tipo-usuario.model';
+import { TIPOS_USUARIO, TipoUsuario } from '../funcionario.tipo-usuario.model';
+import { UsuarioService } from '../../usuario/usuario.service';
+import { Usuario } from '../../usuario/usuario.model';
 
 @Component({
    selector: 'app-funcionario-novo',
@@ -14,12 +16,14 @@ import { TIPOS_USUARIO } from '../funcionario.tipo-usuario.model';
 export class FuncionarioNovoComponent implements OnInit {
 
    constructor(private funcionarioService: FuncionarioService,
-      private route: ActivatedRoute,
-      private router: Router,
-      private notification: NotificationsComponent) { }
+               private usuarioService: UsuarioService,
+               private route: ActivatedRoute,
+               private router: Router,
+               private notification: NotificationsComponent) { }
 
-   private funcionario = {} as Funcionario;
-   tipoUsuario = [] as string[];
+   @Input() funcionario = {} as Funcionario;
+   @Input() usuarios = [] as Usuario[];
+   tipoUsuario = [] as TipoUsuario[];
 
    ngOnInit() {
       let route = this.route.snapshot.params['key']
@@ -27,6 +31,7 @@ export class FuncionarioNovoComponent implements OnInit {
          this.funcionarioService.funcionarioById(route).subscribe(funcionario => this.funcionario = funcionario)
       }
 
+      this.usuarioService.usuarios().subscribe(usuarios => this.usuarios = usuarios);
       this.tipoUsuario = TIPOS_USUARIO;
    }
 
@@ -38,6 +43,10 @@ export class FuncionarioNovoComponent implements OnInit {
 
    clear(f: NgForm) {
       this.funcionario = {} as Funcionario;
+   }
+
+   equals(usuarioUm, usuarioDois) {
+      return usuarioUm && usuarioDois && usuarioUm.codigo == usuarioDois.codigo;
    }
 
 }

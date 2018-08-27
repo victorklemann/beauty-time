@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ErrorHandler } from '../app.error-handler';
 
 import { AngularFireList, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable'

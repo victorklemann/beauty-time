@@ -64,17 +64,17 @@
                         <div class="row">
                            <div class="col-sm-4">
                               <label class="col-form-label">Estado</label>
-                              <select name="select" class="form-control" name="estado" ngModel>
-                                 <option value="opt1">- Selecione -</option>
-                                 <option value="opt2">Type 2</option>
+                              <select class="form-control" name="estado" (change)="changeEstado()" [(ngModel)]="usuario.estado" [compareWith]="equals">
+                                 <option value="-1" selected="selected">- Selecione -</option>
+                                 <option *ngFor="let estado of estados" [ngValue]="estado">{{estado.nome}}</option>
                               </select>
                            </div>
 
                            <div class="col-sm-8">
                               <label class="col-form-label">Cidade</label>
-                              <select name="select" class="form-control" name="cidade" ngModel>
-                                 <option value="opt1">- Selecione -</option>
-                                 <option value="opt2">Type 2</option>
+                              <select class="form-control" name="cidade" [(ngModel)]="usuario.cidade" [compareWith]="equals">
+                                 <option value="-1" selected="selected">- Selecione -</option>
+                                 <option *ngFor="let cidade of cidades" [ngValue]="cidade">{{cidade.nome}}</option>
                               </select>
                            </div>
                         </div>

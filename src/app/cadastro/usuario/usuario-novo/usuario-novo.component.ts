@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import * as _ from 'underscore';
 
 import { Usuario } from '../usuario.model';
+import { Estado, ESTADOS } from '../../../general/estado.model';
+import { Cidade, CIDADES } from '../../../general/cidade.model';
 import { UsuarioService } from '../usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsComponent } from '../../../notifications/notifications.component';
@@ -13,16 +16,19 @@ import { NotificationsComponent } from '../../../notifications/notifications.com
 export class UsuarioNovoComponent implements OnInit {
 
    constructor(private usuarioService: UsuarioService,
-               private route: ActivatedRoute,
-               private router: Router,
-               private notification: NotificationsComponent) { }
+      private route: ActivatedRoute,
+      private router: Router,
+      private notification: NotificationsComponent) { }
 
-   private usuario = {} as Usuario
+   @Input() usuario = {} as Usuario
+   private estados = ESTADOS;
+   private cidades = CIDADES;
 
    ngOnInit() {
       let route = this.route.snapshot.params['key']
       if (route != undefined) {
-         this.usuarioService.usuarioById(route).subscribe(usuario => this.usuario = usuario)
+         this.usuarioService.usuarioById(route).subscribe(usuario => {this.usuario = usuario;
+                                                                      this.changeEstado(); })
       }
    }
 
@@ -34,6 +40,14 @@ export class UsuarioNovoComponent implements OnInit {
 
    clear(f: NgForm) {
       this.usuario = {} as Usuario;
+   }
+
+   changeEstado() {
+      this.cidades = _.where(CIDADES, { estado: _.find(this.estados, { codigo: this.usuario.estado.codigo }) });
+   }
+
+   equals(estadoUm, estadoDois) {
+      return estadoUm && estadoDois && estadoUm.codigo == estadoDois.codigo;
    }
 
 }

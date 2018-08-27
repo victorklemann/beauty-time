@@ -33,7 +33,8 @@
         "../node_modules/raphael/raphael.js",
         "../node_modules/morris.js/morris.js",
         "../node_modules/jquery-sparkline/jquery.sparkline.min.js",
-        "../node_modules/underscore/underscore.js"
+        "../node_modules/underscore/underscore.js",
+        "../node_modules/moment/min/moment.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -37,8 +37,8 @@
                      <input type="number" class="form-control" name="duracao" [(ngModel)]="servico.duracao">
                   </div>
                   <div class="col-sm-10">
-                     <select name="select" class="form-control" [(ngModel)]="servico.tipoDuracao">
-                        <option *ngFor="let tipo of tiposDuracao" value="{{tipo}}">{{tipo}}</option>
+                     <select name="select" class="form-control" [(ngModel)]="servico.tipoDuracao" [compareWith]="equals">
+                        <option *ngFor="let tipo of tiposDuracao" [ngValue]="tipo">{{tipo.descricao}}</option>
                      </select>
                   </div>
                </div>

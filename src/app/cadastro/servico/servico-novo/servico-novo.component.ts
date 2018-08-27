@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 
 import { Servico } from '../servico.model';
 import { ServicoService } from '../servico.service';
-import { TIPOS_DURACAO } from '../servico.tipo-duracao.model';
+import { TIPOS_DURACAO, TipoDuracao } from '../servico.tipo-duracao.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsComponent } from '../../../notifications/notifications.component';
 
@@ -19,18 +19,19 @@ export class ServicoNovoComponent implements OnInit {
       private notification: NotificationsComponent) { }
 
    private servico = {} as Servico;
-   tiposDuracao = [] as string[];
+   tiposDuracao = [] as TipoDuracao[];
 
    ngOnInit() {
+      this.tiposDuracao = TIPOS_DURACAO;
+
       let route = this.route.snapshot.params['key']
       if (route != undefined) {
          this.servicoService.servicoById(route).subscribe(servico => this.servico = servico)
       }
-
-      this.tiposDuracao = TIPOS_DURACAO;
+      
    }
 
-   salvar(f: NgForm) {
+   salvar(f: NgForm) {      
       this.servicoService.save(this.servico)
       this.notification.showSuccessMessage('Salvo com sucesso!');
       this.router.navigate(['/cadastro/servico']);
@@ -38,6 +39,10 @@ export class ServicoNovoComponent implements OnInit {
 
    clear(f: NgForm) {
       this.servico = {} as Servico;
+   }
+
+   equals(tipoDuracaoUm, tipoDuracaoDois) {
+      return tipoDuracaoUm && tipoDuracaoDois && tipoDuracaoUm.codigo == tipoDuracaoDois.codigo;
    }
 
 }

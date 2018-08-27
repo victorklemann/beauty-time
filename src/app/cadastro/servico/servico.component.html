@@ -29,7 +29,7 @@
                         <tr *ngFor="let servico of servicos | async">
                            <td>{{servico.codigo}}</td>
                            <td>{{servico.nome}}</td>
-                           <td>{{servico.duracao + ' ' + servico.tipoDuracao}}</td>
+                           <td>{{servico.duracao + ' ' + servico.tipoDuracao?.descricao}}</td>
                            <td>{{servico.preco}}</td>
                            <td>
                               <button class="btn btn-success btn-mini" [routerLink]="['novo', servico.key]"><i class="ti-pencil"></i></button>

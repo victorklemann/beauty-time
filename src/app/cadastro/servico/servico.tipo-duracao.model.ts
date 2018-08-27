@@ -1,4 +1,11 @@
-const MINUTOS = 'Minuto(s)' as string;
-const HORAS = 'Hora(s)' as string;
+const MINUTOS = { codigo: '1', descricao: 'Minuto(s)' } as TipoDuracao;
+const HORAS = { codigo: '2', descricao: 'Hora(s)' } as TipoDuracao;
 
-export const TIPOS_DURACAO = [ MINUTOS, HORAS ];
+export const TIPOS_DURACAO = [ MINUTOS, HORAS ] as TipoDuracao[];
+
+export interface TipoDuracao {
+
+   codigo: string;
+   descricao: string;
+
+}

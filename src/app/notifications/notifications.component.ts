@@ -19,9 +19,7 @@ export class NotificationsComponent {
       this.addToast(message, title, timeout, 'info')
    }
 
-   showSuccessMessage(message: string, title?: string, timeout?: number) {
-      console.log('a');
-      
+   showSuccessMessage(message: string, title?: string, timeout?: number) {      
       this.addToast(message, title, timeout, 'success')
    }
 

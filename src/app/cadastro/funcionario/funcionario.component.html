@@ -28,9 +28,9 @@
                      <tbody>
                         <tr *ngFor="let funcionario of funcionarios | async">
                            <td>{{funcionario.codigo}}</td>
-                           <td>{{funcionario.nome}}</td>
-                           <td>{{funcionario.email + ' ' + funcionario.tipoDuracao}}</td>
-                           <td>{{funcionario.telefone}}</td>
+                           <td>{{funcionario.usuario.nome}}</td>
+                           <td>{{funcionario.usuario.email}}</td>
+                           <td>{{funcionario.usuario.telefone}}</td>
                            <td>
                               <button class="btn btn-success btn-mini" [routerLink]="['novo', funcionario.key]"><i class="ti-pencil"></i></button>
                            </td>
