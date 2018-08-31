@@ -21,14 +21,18 @@ export class UsuarioNovoComponent implements OnInit {
       private notification: NotificationsComponent) { }
 
    @Input() usuario = {} as Usuario
+   estado: any;
    private estados = ESTADOS;
    private cidades = CIDADES;
 
    ngOnInit() {
       let route = this.route.snapshot.params['key']
       if (route != undefined) {
-         this.usuarioService.usuarioById(route).subscribe(usuario => {this.usuario = usuario;
-                                                                      this.changeEstado(); })
+         this.usuarioService.usuarioById(route).subscribe(usuario => {
+            this.usuario = usuario;
+            this.estado = usuario.cidade.estado
+            this.changeEstado();
+         })
       }
    }
 
@@ -43,7 +47,7 @@ export class UsuarioNovoComponent implements OnInit {
    }
 
    changeEstado() {
-      this.cidades = _.where(CIDADES, { estado: _.find(this.estados, { codigo: this.usuario.estado.codigo }) });
+      this.cidades = _.where(CIDADES, { estado: _.find(this.estados, { codigo: this.estado.codigo }) });
    }
 
    equals(estadoUm, estadoDois) {

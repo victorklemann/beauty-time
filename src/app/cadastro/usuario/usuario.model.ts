@@ -1,8 +1,7 @@
 import { Cidade } from "../../general/cidade.model";
-import { Estado } from "../../general/estado.model";
 
 export interface Usuario {
-    
+
    key: string;
    usuario: string;
    nome: string;
@@ -12,6 +11,5 @@ export interface Usuario {
    cep: string;
    endereco: string;
    cidade: Cidade;
-   estado: Estado;
 
 }

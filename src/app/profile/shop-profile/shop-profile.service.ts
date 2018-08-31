@@ -1,19 +1,38 @@
 import { Injectable } from "@angular/core";
-import { AngularFireDatabase } from "angularfire2/database";
+import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 
 import { Estabelecimento } from "./shop-profile.model";
 import { Observable } from "rxjs/Observable";
-import { ErrorHandler } from "../../app.error-handler";
+import { DataBaseService } from "../../general/database.service";
 
 @Injectable()
 export class ShopProfileService {
 
-   constructor(private db: AngularFireDatabase) { }
+   path: string = 'shops'
+   list: AngularFireList<Estabelecimento[]>
 
-   shopById(id: string): Observable<Estabelecimento> {
-      return this.db.object(`estabelecimentos/${id}`)
-                    .snapshotChanges()
-                    .map(res => { return res.payload.val()});
-  }
+   constructor(private afd: AngularFireDatabase, private dbService: DataBaseService) {
+      this.refresh()
+   }
+
+   refresh() {
+      this.list = this.afd.list(this.path)
+   }
+
+   save(estabelecimento: Estabelecimento) {
+      this.dbService.save(this.list, estabelecimento)
+   }
+
+   delete(keyEstabelecimento: string) {
+      this.dbService.delete(this.list, keyEstabelecimento)
+   }
+
+   estabelecimentos() {
+      return this.dbService.list(this.list);
+   }
+
+   estabelecimentoById(key: string): Observable<Estabelecimento> {
+      return this.dbService.objectById(this.afd.object(`/${this.path}/${key}`))
+   }
 
 }
