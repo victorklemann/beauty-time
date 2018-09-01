@@ -35,13 +35,13 @@ export class FuncionarioNovoComponent implements OnInit {
       this.tipoUsuario = TIPOS_USUARIO;
    }
 
-   salvar(f: NgForm) {
+   salvar() {
       this.funcionarioService.save(this.funcionario)
       this.notification.showSuccessMessage('Salvo com sucesso!');
       this.router.navigate(['/cadastro/funcionario']);
    }
 
-   clear(f: NgForm) {
+   clear() {
       this.funcionario = {} as Funcionario;
    }
 

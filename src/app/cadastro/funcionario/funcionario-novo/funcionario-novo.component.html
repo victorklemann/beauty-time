@@ -20,18 +20,6 @@
                   </div>
                </div>
 
-               <div class="input-group"
-     moment-picker="ctrl.timepicker"
-     format="HH:mm:ss">
-    <span class="input-group-addon">
-        <i class="octicon octicon-clock"></i>
-    </span>
-    <input class="form-control"
-           placeholder="Select a time"
-           ng-model="ctrl.timepicker"
-           ng-model-options="{ updateOn: 'blur' }">
-</div>
-
                <label class="col-form-label">Tipo</label>
                <div class="row">
                   <div class="col-md-12">
@@ -121,11 +109,11 @@
 
                <div class="row">
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <button class="btn btn-primary btn-block" (click)="clear(form)">Novo</button>
+                     <button class="btn btn-primary btn-block" (click)="clear()">Novo</button>
                   </div>
 
                   <div class="col-sm-4 col-md-4 col-lg-4">
-                     <button class="btn btn-success btn-block" (click)="salvar(form)">Salvar</button>
+                     <button class="btn btn-success btn-block" (click)="salvar()">Salvar</button>
                   </div>
 
                   <div class="col-sm-4 col-md-4 col-lg-4">

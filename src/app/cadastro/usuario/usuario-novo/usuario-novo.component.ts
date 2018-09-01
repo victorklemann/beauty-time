@@ -3,8 +3,8 @@ import { NgForm } from '@angular/forms';
 import * as _ from 'underscore';
 
 import { Usuario } from '../usuario.model';
-import { Estado, ESTADOS } from '../../../general/estado.model';
-import { Cidade, CIDADES } from '../../../general/cidade.model';
+import { ESTADOS } from '../../../general/estado.model';
+import { CIDADES } from '../../../general/cidade.model';
 import { UsuarioService } from '../usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsComponent } from '../../../notifications/notifications.component';
@@ -30,7 +30,7 @@ export class UsuarioNovoComponent implements OnInit {
       if (route != undefined) {
          this.usuarioService.usuarioById(route).subscribe(usuario => {
             this.usuario = usuario;
-            this.estado = usuario.cidade.estado
+            this.estado = usuario.cidade.estado;
             this.changeEstado();
          })
       }

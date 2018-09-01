@@ -2,7 +2,8 @@ import { Cidade } from "../../general/cidade.model";
 
 export interface Estabelecimento {
 
-   id: string;
+   key: string;
+   codigo: string;
    nome: string;
    telefone: string;
    cep: string;

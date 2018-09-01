@@ -7,6 +7,7 @@ import { ProfileRoutes } from './profile.routing';
 import { SharedModule } from '../shared/shared.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
+import { ShopProfileService } from './shop-profile/shop-profile.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { ShopProfileComponent } from './shop-profile/shop-profile.component';
   declarations: [
      UserProfileComponent,
      ShopProfileComponent
-  ]
+  ],
+  providers: [ ShopProfileService ]
 })
 export class ProfileModule { }
