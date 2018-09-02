@@ -41,11 +41,10 @@ const MENUITEMS = [
         target: true
       },
       {
-        state: 'home',
+        state: 'inicio-usuario',
         name: 'Home',
         type: 'link',
-        icon: 'ti-home',
-        target: true
+        icon: 'ti-home'
       },
       {
         state: 'cadastro',

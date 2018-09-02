@@ -1,8 +1,9 @@
 import { Usuario } from "../usuario/usuario.model";
 import { TipoUsuario } from "./funcionario.tipo-usuario.model";
+import { Servico } from "../servico/servico.model";
 
 export interface Funcionario {
-    
+
    key: string;
    codigo: string;
    usuario: Usuario;
@@ -11,6 +12,6 @@ export interface Funcionario {
    expedienteAte: Date;
    intervaloDe: Date;
    intervaloAte: Date;
-   servicos: string[];
+   servicos: Servico[];
 
 }

@@ -1,0 +1,38 @@
+<a class="card" *ngFor="let estabelecimento of estabelecimentos | async" [routerLink]="['agenda', estabelecimento.key]">
+   <div class="card-block">
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="cover-profile">
+               <div class="profile-bg-img">
+                  <img class="profile-bg-img img-fluid" src="assets/images/user-profile/bg-img1.jpg" alt="bg-img">
+                  <div class="card-block user-info">
+                     <div class="col-md-12">
+                        <div class="media-left">
+                           <a href="#" class="profile-image">
+                              <img class="user-img img-circle" src="assets/images/user-profile/user-img.jpg" alt="user-img">
+                           </a>
+                        </div>
+                        <div class="media-body row">
+                           <div class="col-lg-12">
+                              <div class="user-title">
+                                 <h2>aaaa</h2>
+                                 <span class="text-white">Salão de Beleza</span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col-sm-12">
+            <div class="pull-right">
+               <span>Jaraguá do Sul / SC (12KM)</span>
+            </div>
+         </div>
+      </div>
+   </div>
+</a>

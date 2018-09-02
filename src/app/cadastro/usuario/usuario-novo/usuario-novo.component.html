@@ -10,6 +10,12 @@
                   </div>
                </div>
 
+               <label class="col-form-label">Sexo</label>
+               <select class="form-control" name="sexo" [(ngModel)]="usuario.sexo" [compareWith]="equals">
+                  <option value="-1" selected="selected">- Selecione -</option>
+                  <option *ngFor="let sexo of sexos" [ngValue]="sexo">{{sexo.descricao}}</option>
+               </select>
+
                <label class="col-form-label">Nome</label>
                <div class="row">
                   <div class="col-sm-12">

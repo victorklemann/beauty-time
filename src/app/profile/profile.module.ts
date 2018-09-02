@@ -6,6 +6,7 @@ import { ProfileRoutes } from './profile.routing';
 
 import { SharedModule } from '../shared/shared.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UsuarioService } from '../cadastro/usuario/usuario.service';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 import { ShopProfileService } from './shop-profile/shop-profile.service';
 
@@ -19,6 +20,6 @@ import { ShopProfileService } from './shop-profile/shop-profile.service';
      UserProfileComponent,
      ShopProfileComponent
   ],
-  providers: [ ShopProfileService ]
+  providers: [ UsuarioService, ShopProfileService ]
 })
 export class ProfileModule { }

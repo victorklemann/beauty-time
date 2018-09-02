@@ -8,6 +8,9 @@ export const AppRoutes: Routes = [{
   component: AdminLayoutComponent,
   children: [
     {
+      path: 'inicio-usuario',
+      loadChildren: './inicio-usuario/inicio-usuario.module#InicioUsuarioModule'
+    }, {
       path: '',
       redirectTo: 'cadastro',
       pathMatch: 'full'
@@ -23,10 +26,6 @@ export const AppRoutes: Routes = [{
   path: '',
   component: AuthLayoutComponent,
   children: [
-    {
-      path: 'home',
-      loadChildren: './home/home.module#HomeModule'
-    },
     {
       path: 'sign-in',
       loadChildren: './sign-in/sign-in.module#SignInModule'

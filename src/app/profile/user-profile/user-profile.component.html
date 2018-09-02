@@ -31,26 +31,25 @@
       <div class="tab-header">
          <ul class="nav nav-tabs md-tabs tab-timeline" role="tablist" id="mytab">
             <li class="nav-item">
-               <a class="nav-link active" data-toggle="tab" href="#personal" role="tab" aria-expanded="true">Informações</a>
+               <a class="nav-link active" data-toggle="tab" href="#info" role="tab" aria-expanded="true">Informações</a>
                <div class="slide"></div>
             </li>
          </ul>
       </div>
 
-
       <div class="tab-content">
-
-         <div class="tab-pane active" id="personal" role="tabpanel" aria-expanded="true">
+         <div class="tab-pane active" id="info" role="tabpanel" aria-expanded="true">
 
             <div class="card">
                <div class="card-header">
                   <h5 class="card-header-text">Sobre mim</h5>
-                  <button id="edit-btn" type="button" class="btn btn-sm btn-primary waves-effect waves-light f-right">
-                     <i class="icofont icofont-edit"></i>
+                  <button id="edit-btn" type="button" class="btn btn-sm btn-primary f-right" (click)="clear()">
+                     &nbsp;
+                     <i class="icofont {{!isEditing ? 'icofont-ui-edit' : 'icofont-ui-close'}}"></i>
                   </button>
                </div>
                <div class="card-block">
-                  <div class="view-info">
+                  <div class="view-info" *ngIf="!isEditing">
                      <div class="row">
                         <div class="col-lg-12">
                            <div class="general-info">
@@ -60,27 +59,27 @@
                                        <tbody>
                                           <tr>
                                              <th scope="row">Usuário:</th>
-                                             <td>victor.klemann</td>
+                                             <td>{{usuario.usuario}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">E-mail:</th>
-                                             <td>victorvklemann@gmail.com</td>
+                                             <td>{{usuario.email}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">Telefone:</th>
-                                             <td>(47) 3312 - 3456</td>
+                                             <td>{{usuario.telefone}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">CEP:</th>
-                                             <td>89 260 - 487</td>
+                                             <td>{{usuario.cep}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">Cidade:</th>
-                                             <td>Jaraguá do Sul</td>
+                                             <td>{{usuario.cidade?.nome}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">Endereço:</th>
-                                             <td>Rua Pastor Albert Schneider</td>
+                                             <td>{{usuario.endereco}}</td>
                                           </tr>
                                        </tbody>
                                     </table>
@@ -91,15 +90,15 @@
                                        <tbody>
                                           <tr>
                                              <th scope="row">Nome Completo:</th>
-                                             <td>Víctor Vinicius Klemann</td>
+                                             <td>{{usuario.nome}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">Sexo:</th>
-                                             <td>Masculino</td>
+                                             <td>{{usuario.sexo?.descricao}}</td>
                                           </tr>
                                           <tr>
-                                             <th scope="row">Celular</th>
-                                             <td>(47) 9 9987 - 5432</td>
+                                             <th scope="row">Celular:</th>
+                                             <td>{{usuario.celular}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">&nbsp;</th>
@@ -107,11 +106,11 @@
                                           </tr>
                                           <tr>
                                              <th scope="row">Estado:</th>
-                                             <td>Santa Catarina</td>
+                                             <td>{{usuario.cidade?.estado?.nome}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">Número</th>
-                                             <td>1234</td>
+                                             <td>{{usuario.numero}}</td>
                                           </tr>
                                        </tbody>
                                     </table>
@@ -127,127 +126,102 @@
 
                   </div>
 
-                  <div class="edit-info" style="display: none;">
+                  <div class="edit-info" *ngIf="isEditing">
                      <div class="row">
                         <div class="col-lg-12">
-                           <div class="general-info">
-                              <div class="row">
-                                 <div class="col-lg-6">
-                                    <table class="table">
-                                       <tbody>
-                                          <tr>
-                                             <td>
-                                                <div class="input-group">
-                                                   <span class="input-group-addon">
-                                                      <i class="icofont icofont-user"></i>
-                                                   </span>
-                                                   <input type="text" class="form-control" placeholder="Full Name">
-                                                </div>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td>
-                                                <div class="form-radio">
-                                                   <div class="group-add-on">
-                                                      <div class="radio radiofill radio-inline">
-                                                         <label>
-                                                            <input type="radio" name="radio" checked="">
-                                                            <i class="helper"></i> Male
-                                                         </label>
-                                                      </div>
-                                                      <div class="radio radiofill radio-inline">
-                                                         <label>
-                                                            <input type="radio" name="radio">
-                                                            <i class="helper"></i> Female
-                                                         </label>
-                                                      </div>
-                                                   </div>
-                                                </div>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td>
-                                                <input id="dropper-default" class="form-control" type="text" placeholder="Birth Date">
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td>
-                                                <select id="hello-single" class="form-control">
-                                                   <option value="">---- Marital Status ----</option>
-                                                   <option value="married">Married</option>
-                                                   <option value="unmarried">Unmarried</option>
-                                                </select>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td>
-                                                <div class="input-group">
-                                                   <span class="input-group-addon">
-                                                      <i class="icofont icofont-location-pin"></i>
-                                                   </span>
-                                                   <input type="text" class="form-control" placeholder="Address">
-                                                </div>
-                                             </td>
-                                          </tr>
-                                       </tbody>
-                                    </table>
+
+                           <form #form="ngForm" novalidate>
+                              <div class="form-group">
+                                 <div class="row">
+                                    <div class="col-lg-12">
+
+                                       <div class="row">
+                                          <div class="col-sm-6">
+                                             <label class="col-form-label">Nome Completo</label>
+                                             <input type="text" class="form-control" name="nome" [(ngModel)]="usuario.nome">
+                                          </div>
+
+                                          <div class="col-sm-6">
+                                             <label class="col-form-label">Sexo</label>
+                                             <select class="form-control" name="sexo" [(ngModel)]="usuario.sexo" [compareWith]="equals">
+                                                <option value="-1" selected="selected">- Selecione -</option>
+                                                <option *ngFor="let sexo of sexos" [ngValue]="sexo">{{sexo.descricao}}</option>
+                                             </select>
+                                          </div>
+                                       </div>
+
+                                       <div class="row">
+                                          <div class="col-sm-6">
+                                             <label class="col-form-label">E-mail</label>
+                                             <input type="text" class="form-control" name="email" [(ngModel)]="usuario.email">
+                                          </div>
+                                       </div>
+
+                                       <div class="row">
+                                          <div class="col-sm-6">
+                                             <label class="col-form-label">Telefone</label>
+                                             <input type="text" class="form-control" name="telefone" [(ngModel)]="usuario.telefone">
+                                          </div>
+
+                                          <div class="col-sm-6">
+                                             <label class="col-form-label">Celular</label>
+                                             <input type="text" class="form-control" name="celular" [(ngModel)]="usuario.celular">
+                                          </div>
+                                       </div>
+
+                                       <div class="row">
+                                          <div class="col-sm-6">
+                                             <label class="col-form-label">CEP</label>
+                                             <input type="text" class="form-control" name="cep" [(ngModel)]="usuario.cep">
+                                          </div>
+                                       </div>
+
+                                       <div class="row">
+                                          <div class="col-sm-6">
+                                             <label class="col-form-label">Estado</label>
+                                             <select class="form-control" name="estado" (change)="changeEstado()" [(ngModel)]="estado" [compareWith]="equals">
+                                                <option value="-1" selected="selected">- Selecione -</option>
+                                                <option *ngFor="let estado of estados" [ngValue]="estado">{{estado.nome}}</option>
+                                             </select>
+                                          </div>
+
+                                          <div class="col-sm-6">
+                                             <label class="col-form-label">Cidade</label>
+                                             <select class="form-control" name="cidade" [(ngModel)]="usuario.cidade" [compareWith]="equals">
+                                                <option value="-1" selected="selected">- Selecione -</option>
+                                                <option *ngFor="let cidade of cidades" [ngValue]="cidade">{{cidade.nome}}</option>
+                                             </select>
+                                          </div>
+                                       </div>
+
+                                       <div class="row">
+                                          <div class="col-sm-6">
+                                             <label class="col-form-label">Endereço:</label>
+                                             <input type="text" class="form-control" name="endereco" [(ngModel)]="usuario.endereco">
+                                          </div>
+
+                                          <div class="col-sm-3">
+                                             <label class="col-form-label">Número</label>
+                                             <input type="text" class="form-control" name="numero" [(ngModel)]="usuario.numero">
+                                          </div>
+                                       </div>
+
+                                    </div>
                                  </div>
 
-                                 <div class="col-lg-6">
-                                    <table class="table">
-                                       <tbody>
-                                          <tr>
-                                             <td>
-                                                <div class="input-group">
-                                                   <span class="input-group-addon">
-                                                      <i class="icofont icofont-mobile-phone"></i>
-                                                   </span>
-                                                   <input type="text" class="form-control" placeholder="Mobile Number">
-                                                </div>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td>
-                                                <div class="input-group">
-                                                   <span class="input-group-addon">
-                                                      <i class="icofont icofont-social-twitter"></i>
-                                                   </span>
-                                                   <input type="text" class="form-control" placeholder="Twitter Id">
-                                                </div>
-                                             </td>
-                                          </tr>
+                                 <br />
 
-                                          <tr>
-                                             <td>
-                                                <div class="input-group">
-                                                   <span class="input-group-addon">
-                                                      <i class="icofont icofont-social-skype"></i>
-                                                   </span>
-                                                   <input type="email" class="form-control" placeholder="Skype Id">
-                                                </div>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td>
-                                                <div class="input-group">
-                                                   <span class="input-group-addon">
-                                                      <i class="icofont icofont-earth"></i>
-                                                   </span>
-                                                   <input type="text" class="form-control" placeholder="website">
-                                                </div>
-                                             </td>
-                                          </tr>
-                                       </tbody>
-                                    </table>
+                                 <div class="row">
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                       <button class="btn btn-success btn-block" (click)="salvar()">Salvar</button>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-6 col-lg-6">
+                                       <button class="btn btn-danger btn-block" (click)="clear()">Cancelar</button>
+                                    </div>
                                  </div>
-
                               </div>
-
-                              <div class="text-center">
-                                 <a href="#!" class="btn btn-primary waves-effect waves-light m-r-20">Save</a>
-                                 <a href="#!" id="edit-cancel" class="btn btn-default waves-effect">Cancel</a>
-                              </div>
-                           </div>
+                           </form>
 
                         </div>
 

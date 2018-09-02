@@ -1,11 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import * as _ from 'underscore';
 
 import { Estabelecimento } from './shop-profile.model';
 import { ShopProfileService } from './shop-profile.service';
 import { NotificationsComponent } from '../../notifications/notifications.component';
-import { ESTADOS } from '../../general/estado.model';
+import { ESTADOS, Estado } from '../../general/estado.model';
 import { CIDADES } from '../../general/cidade.model';
 
 @Component({
@@ -15,7 +14,7 @@ import { CIDADES } from '../../general/cidade.model';
 export class ShopProfileComponent implements OnInit {
 
    @Input() estabelecimento = {} as Estabelecimento;
-   estado: any;
+   estado: Estado;
    isEditing: boolean = false;
    activeTab: string = 'sobre';
 
@@ -33,13 +32,13 @@ export class ShopProfileComponent implements OnInit {
       });
    }
 
-   salvar(f: NgForm) {
+   salvar() {
       this.shopProfileService.save(this.estabelecimento);
       this.notification.showSuccessMessage('Salvo com sucesso!');
       this.isEditing = false;
    }
 
-   clear(f: NgForm) {
+   clear() {
       this.shopProfileService.estabelecimentoById("-LLIMLPjdK6ZjSbO_CKt").subscribe(estabelecimento =>this.estabelecimento = estabelecimento);
       this.changeEditing();
    }

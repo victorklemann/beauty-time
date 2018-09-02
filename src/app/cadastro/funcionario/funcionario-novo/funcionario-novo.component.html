@@ -96,11 +96,13 @@
                      </div>
 
                      <div class="form-group">
-                        <div class="row" *ngFor="let item of [0,1,2]">
-                           <div class="col-sm-6">
-                              <input class="checkbox-fade fade-in-primary" type="checkbox">
-                              <label class="col-form-label">Serviço {{item}}</label>
-                           </div>
+                        <div class="row" >
+                           <ul>
+                              <li *ngFor="let servico of servicos; let i = index;">
+                                    <input class="checkbox-fade fade-in-primary" name="ops{{i}}"type="checkbox" [(ngModel)]="servicos[i].ativo">
+                                    <label class="col-form-label">{{servicos[i].nome}}</label>
+                              </li>
+                           </ul>
                         </div>
                      </div>
                   </div>

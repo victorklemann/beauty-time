@@ -8,6 +8,7 @@ import { CIDADES } from '../../../general/cidade.model';
 import { UsuarioService } from '../usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsComponent } from '../../../notifications/notifications.component';
+import { SEXOS } from '../../../general/sexo.model';
 
 @Component({
    selector: 'app-usuario-novo',
@@ -24,6 +25,7 @@ export class UsuarioNovoComponent implements OnInit {
    estado: any;
    private estados = ESTADOS;
    private cidades = CIDADES;
+   private sexos = SEXOS;
 
    ngOnInit() {
       let route = this.route.snapshot.params['key']
