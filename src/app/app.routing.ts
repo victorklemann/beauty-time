@@ -11,6 +11,9 @@ export const AppRoutes: Routes = [{
       path: 'inicio-usuario',
       loadChildren: './inicio-usuario/inicio-usuario.module#InicioUsuarioModule'
     }, {
+      path: 'inicio-estabelecimento',
+      loadChildren: './inicio-estabelecimento/inicio-estabelecimento.module#InicioEstabelecimentoModule'
+    }, {
       path: '',
       redirectTo: 'cadastro',
       pathMatch: 'full'

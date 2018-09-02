@@ -8,6 +8,7 @@ import { InicioUsuarioRoutes } from './inicio-usuario.routing';
 import { InicioUsuarioComponent } from './inicio-usuario.component';
 import { AgendaComponent } from '../agenda/agenda.component';
 import { ShopProfileService } from '../profile/shop-profile/shop-profile.service';
+import { AgendaConfirmacaoComponent } from '../agenda/agenda-confirmacao/agenda-confirmacao.component';
 
 @NgModule({
    imports: [
@@ -17,8 +18,14 @@ import { ShopProfileService } from '../profile/shop-profile/shop-profile.service
    ],
    declarations: [
       InicioUsuarioComponent,
-      AgendaComponent
+      AgendaComponent,
+      AgendaConfirmacaoComponent
    ],
-   providers: [ ShopProfileService ]
+   providers: [ 
+      ShopProfileService 
+   ],
+   entryComponents: [
+      AgendaConfirmacaoComponent
+   ]
 })
 export class InicioUsuarioModule { }
