@@ -42,19 +42,19 @@ const MENUITEMS = [
          },
          {
             state: 'inicio-estabelecimento',
-            name: 'Home estab',
+            name: 'Início Salão',
             type: 'link',
             icon: 'ti-home'
          }, {
             state: 'inicio-usuario',
-            name: 'Home',
+            name: 'Início Usuário',
             type: 'link',
             icon: 'ti-home'
          }, {
             state: 'cadastro',
             name: 'Cadastros',
             type: 'sub',
-            icon: 'ti-layout-grid2-alt',
+            icon: 'ti ti-clipboard',
             children: [
                {
                   state: 'usuario',

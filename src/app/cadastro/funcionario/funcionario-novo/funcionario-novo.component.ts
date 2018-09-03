@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotificationsComponent } from '../../../notifications/notifications.component';
-import * as _ from 'underscore';
 
 import { Funcionario } from '../funcionario.model';
 import { FuncionarioService } from '../funcionario.service';
@@ -10,7 +9,6 @@ import { UsuarioService } from '../../usuario/usuario.service';
 import { Usuario } from '../../usuario/usuario.model';
 import { ServicoService } from '../../servico/servico.service';
 import { Servico } from '../../servico/servico.model';
-import { NgForm } from '@angular/forms';
 
 @Component({
    selector: 'app-funcionario-novo',

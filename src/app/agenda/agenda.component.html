@@ -38,17 +38,17 @@
       <div class="row">
          <div class="col-sm-12">
             <label class="col-form-label">Serviço</label>
-            <select class="form-control" name="sexo">
+            <select class="form-control" name="servico" (change)="changeServico()" [(ngModel)]="agenda.servico">
                <option value="-1" selected="selected">- Selecione -</option>
-               <option *ngFor="let sexo of [1,2,3]" [ngValue]="sexo">{{sexo.descricao}}</option>
+               <option *ngFor="let servico of servicos" [ngValue]="servico">{{servico.descricao}}</option>
             </select>
          </div>
 
          <div class="col-sm-12">
             <label class="col-form-label">Funcionário</label>
-            <select class="form-control" name="sexo">
+            <select class="form-control" name="funcionario" (change)="changeFuncionario()" [(ngModel)]="agenda.funcionario">
                <option value="-1" selected="selected">- Selecione -</option>
-               <option *ngFor="let sexo of [1,2,3]" [ngValue]="sexo">{{sexo.descricao}}</option>
+               <option *ngFor="let funcionario of funcionarios" [ngValue]="funcionario">{{funcionario.usuario?.nome}}</option>
             </select>
          </div>
 
@@ -65,8 +65,8 @@
                      </div>
 
                      <div class="col-sm-4 text-center">
-                        <h6 class="media-heading">20/05/2018</h6>
-                        <span class="f-12 text-muted">Terça-feira</span>
+                        <h6 class="media-heading">{{data}}</h6>
+                        <span class="f-12 text-muted">{{diaSemana}}</span>
                      </div>
 
                      <div class="col-sm-4 text-center">
@@ -79,9 +79,9 @@
 
                <div class="card-block">
                   <div class="row">
-                     <div class="col-sm-4" *ngFor="let horario of horarios">
-                        <button class="btn btn-success btn-block" style="margin-bottom: 10px;" (click)="open()">
-                           {{horario}}
+                     <div class="col-sm-4" *ngFor="let agenda of agendas">
+                        <button class="btn btn-{{ agenda.status?.codigo == '1' ? 'danger' : 'success' }} btn-block" style="margin-bottom: 10px;" (click)="open(horario)">
+                           {{agenda.horaInicio}}
                         </button>
                      </div>
                   </div>

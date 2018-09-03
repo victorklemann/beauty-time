@@ -3,18 +3,28 @@
 </div>
 <div class="modal-body">
    <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-6">
+         <strong>
+            <span class="f-14">Data:</span>
+         </strong> {{agenda.data}}
+      </div>
+      <div class="col-sm-6">
          <strong>
             <span class="f-14">Horário:</span>
-         </strong> 08:00
+         </strong> {{agenda.horaInicio + ' as ' + agenda.horaFim}}
       </div>
    </div>
 
    <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-6">
          <strong>
             <span class="f-14">Serviço:</span>
-         </strong> Corte de cabelo
+         </strong> {{agenda.servico?.descricao}}
+      </div>
+      <div class="col-sm-6">
+         <strong>
+            <span class="f-14">Preço:</span>
+         </strong> {{agenda.servico?.preco}}
       </div>
    </div>
 
@@ -22,18 +32,18 @@
       <div class="col-sm-12">
          <strong>
             <span class="f-14">Atendente:</span>
-         </strong> Víctor Klemann
+         </strong> {{agenda.funcionario?.usuario?.nome}}
       </div>
    </div>
 </div>
 <div class="modal-footer">
    <div class="row">
       <div class="col-sm-6">
-         <button class="btn btn-warning">Cancelar</button>
+         <button class="btn btn-warning" (click)="activeModal.dismiss()">Cancelar</button>
       </div>
 
       <div class="col-sm-6">
-         <button class="btn btn-success">Confirmar</button>
+         <button class="btn btn-success" (click)="salvar()">Confirmar</button>
       </div>
    </div>
 </div>
