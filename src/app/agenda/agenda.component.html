@@ -80,7 +80,7 @@
                <div class="card-block">
                   <div class="row">
                      <div class="col-sm-4" *ngFor="let agenda of agendas">
-                        <button class="btn btn-{{ agenda.status?.codigo == '1' ? 'danger' : 'success' }} btn-block" style="margin-bottom: 10px;" (click)="open(horario)">
+                        <button class="btn btn-{{ agenda.status?.codigo == '1' ? 'danger' : 'success' }} btn-block" style="margin-bottom: 10px;" (click)="open(agenda.horaInicio)">
                            {{agenda.horaInicio}}
                         </button>
                      </div>

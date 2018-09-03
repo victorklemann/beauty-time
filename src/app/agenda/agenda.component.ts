@@ -9,7 +9,6 @@ import { Servico } from '../cadastro/servico/servico.model';
 import { Funcionario } from '../cadastro/funcionario/funcionario.model';
 import { Agenda } from './agenda.model';
 import { AgendaService } from './agenda.service';
-import { AGENDADO } from './status-agenda.model';
 
 @Component({
    selector: 'app-agenda',
@@ -46,10 +45,11 @@ export class AgendaComponent implements OnInit {
 
    changeServico() {
       this.funcionarios = [];
-      
+
       for (let index in this.allFuncionarios) {
          let funcionario = this.allFuncionarios[index];
          let servico = _.find(funcionario.servicos, { key: this.agenda.servico.key, ativo: true });
+
          if (servico !== undefined) {
             this.funcionarios.push(funcionario);
          }
@@ -59,47 +59,38 @@ export class AgendaComponent implements OnInit {
    changeFuncionario() {
       this.agendas = [];
 
-      // console.log(_.find(this.allFuncionarios, { key: this.agenda.funcionario.key}));
-      console.log(_.find(this.allAgendas, { funcionario: _.find(this.allFuncionarios, { key: this.agenda.funcionario.key})  }));
-      // console.log(this.agenda.funcionario.key);
-      
-      
-      // let agendasFuncionario = _.find(this.allAgendas, { "funcionario.key": this.agenda.funcionario.key });
-      // console.log(agendasFuncionario);
-      
-      // let horario = moment('08:30', 'HH:mm');
-      // for (let index = 0; index < 21; index++) {
-      //    let agenda = _.find(this.allAgendas, { horaInicio: horario.format('HH:mm'), 
-      //                                           funcionario: _.find(this.allFuncionarios, { key: this.agenda.funcionario.key })
-      //                                           }) as Agenda;
-      //    // console.log(horario.format('HH:mm'));
-      //    // console.log(this.allAgendas);
-      //    // console.log(_.find(this.allFuncionarios, { key: this.agenda.funcionario.key }));         
-      //    console.log(_.find(this.allAgendas, { funcionario: funcionario }));
-      //    console.log(agenda.funcionario == _.find(this.allFuncionarios, { key: this.agenda.funcionario.key }));
-         
-                                   
-      //    if (agenda === undefined) {
-      //       agenda = {} as Agenda;
-      //       agenda.horaInicio = horario.format('HH:mm');
-      //    }
-      //    this.agendas.push(agenda);
+      let agendasFuncionario = [];
+      this.agendaService.agendasByFuncionario(this.agenda.funcionario.key).subscribe(response => agendasFuncionario = response);
 
-      //    horario = horario.add(30, 'minutes');
-      // }
+      let horario = moment('08:30', 'HH:mm');
+      for (let index = 0; index < 21; index++) {
+         let agenda = _.find(this.allAgendas, { horaInicio: horario.format('HH:mm'),
+                                                funcionarioKey: this.agenda.funcionario.key }) as Agenda;
 
-      // console.log(this.agendas);
-      
+         if (agenda === undefined) {
+            agenda = {} as Agenda;
+            agenda.horaInicio = horario.format('HH:mm');
+         }
+
+         this.agendas.push(agenda);
+         horario = horario.add(30, 'minutes');
+      }
    }
 
    open(horario: string) {
       let modal = this.modal.open(AgendaConfirmacaoComponent);
       this.agenda.data = this.data;
 
+      let servico = _.findWhere(this.servicos, {key: this.agenda.servico.key})
+
       let hora = moment(horario, 'HH:mm');
       let horaInicio = hora.format('HH:mm');
-      let horaFim = hora.add(this.agenda.servico.duracao, 'minutes').format('HH:mm');
+      let horaFim = hora.add(servico.duracao, 'minutes').format('HH:mm');
 
+      console.log(this.agenda);
+
+      this.agenda.servicoKey = this.agenda.servico.key;
+      this.agenda.funcionarioKey = this.agenda.funcionario.key;
       this.agenda.horaInicio = horaInicio;
       this.agenda.horaFim = horaFim;
       modal.componentInstance.agenda = this.agenda;

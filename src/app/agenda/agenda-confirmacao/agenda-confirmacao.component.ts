@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Agenda } from '../agenda.model';
-import { AgendaService } from '../agenda.service';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { Router } from '@angular/router';
+
+import { Agenda } from '../agenda.model';
+import { AgendaService } from '../agenda.service';
 import { AGENDADO } from '../status-agenda.model';
 
 @Component({

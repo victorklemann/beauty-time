@@ -11,7 +11,7 @@ export class AgendaService {
    path: string = 'agendas'
    list: AngularFireList<Agenda[]>
 
-   constructor(private afd: AngularFireDatabase, private dbService: DataBaseService) { 
+   constructor(private afd: AngularFireDatabase, private dbService: DataBaseService) {
       this.refresh()
    }
 
@@ -26,13 +26,17 @@ export class AgendaService {
    delete(keyAgenda: string) {
       this.dbService.delete(this.list, keyAgenda)
    }
-   
+
    agendas() {
       return this.dbService.list(this.list);
    }
 
    agendaById(key: string): Observable<Agenda> {
       return this.dbService.objectById(this.afd.object(`/${this.path}/${key}`))
+   }
+
+   agendasByFuncionario(keyFuncionario: string): Observable<Agenda[]> {
+      return this.afd.list(this.path, ref => ref.orderByChild('funcionarioKey').equalTo(keyFuncionario)).valueChanges();
    }
 
 }
