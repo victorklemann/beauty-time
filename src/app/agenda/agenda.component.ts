@@ -35,7 +35,7 @@ export class AgendaComponent implements OnInit {
 
    ngOnInit() {
       this.servicoService.servicos().subscribe(servicos => this.servicos = servicos);
-      this.funcionarioService.funcionarios().subscribe(funcionarios => this.allFuncionarios = funcionarios);
+      this.refreshFuncionarios();
       this.agendaService.agendas().subscribe(agendas => this.allAgendas = agendas);
 
       let dataAtual = moment();
@@ -74,11 +74,12 @@ export class AgendaComponent implements OnInit {
 
          this.agendas.push(agenda);
          horario = horario.add(30, 'minutes');
-      }
+      }      
    }
 
    open(horario: string) {
       let modal = this.modal.open(AgendaConfirmacaoComponent);
+      
       this.agenda.data = this.data;
 
       let servico = _.findWhere(this.servicos, {key: this.agenda.servico.key})
@@ -87,13 +88,16 @@ export class AgendaComponent implements OnInit {
       let horaInicio = hora.format('HH:mm');
       let horaFim = hora.add(servico.duracao, 'minutes').format('HH:mm');
 
-      console.log(this.agenda);
-
       this.agenda.servicoKey = this.agenda.servico.key;
       this.agenda.funcionarioKey = this.agenda.funcionario.key;
       this.agenda.horaInicio = horaInicio;
       this.agenda.horaFim = horaFim;
       modal.componentInstance.agenda = this.agenda;
+      modal.componentInstance.agendaComponent = this;
+   }
+
+   refreshFuncionarios() {
+      this.funcionarioService.funcionarios().subscribe(funcionarios => this.allFuncionarios = funcionarios);
    }
 
 }

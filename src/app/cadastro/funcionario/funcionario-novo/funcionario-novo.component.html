@@ -99,7 +99,7 @@
                         <div class="row" >
                            <ul>
                               <li *ngFor="let servico of servicos; let i = index;">
-                                    <input class="checkbox-fade fade-in-primary" name="ops{{i}}"type="checkbox" [(ngModel)]="servicos[i].ativo">
+                                    <input class="checkbox-fade fade-in-primary" name="opc{{i}}"type="checkbox" [(ngModel)]="servicos[i].ativo">
                                     <label class="col-form-label">{{servicos[i].nome}}</label>
                               </li>
                            </ul>

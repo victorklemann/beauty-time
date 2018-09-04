@@ -6,6 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 import { InicioEstabelecimentoRoutes } from './inicio-estabelecimento.routing';
 
 import { InicioEstabelecimentoComponent } from './inicio-estabelecimento.component';
+import { AgendaService } from '../agenda/agenda.service';
+import { AgendaDetailComponent } from '../agenda/agenda-detail/agenda-detail.component';
 
 @NgModule({
    imports: [
@@ -14,7 +16,14 @@ import { InicioEstabelecimentoComponent } from './inicio-estabelecimento.compone
       SharedModule
    ],
    declarations: [
-      InicioEstabelecimentoComponent
+      InicioEstabelecimentoComponent,
+      AgendaDetailComponent
+   ],
+   providers: [
+      AgendaService
+   ], 
+   entryComponents: [
+      AgendaDetailComponent
    ]
 })
 export class InicioEstabelecimentoModule { }

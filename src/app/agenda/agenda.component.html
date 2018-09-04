@@ -53,7 +53,6 @@
          </div>
 
          <div class="col-sm-12">
-
             <br />
             <div class="card">
                <div class="card-header">
@@ -80,7 +79,10 @@
                <div class="card-block">
                   <div class="row">
                      <div class="col-sm-4" *ngFor="let agenda of agendas">
-                        <button class="btn btn-{{ agenda.status?.codigo == '1' ? 'danger' : 'success' }} btn-block" style="margin-bottom: 10px;" (click)="open(agenda.horaInicio)">
+                        <button class="btn btn-{{ agenda.status?.codigo == '1' ? 'danger' : 'success' }} btn-block" 
+                                style="margin-bottom: 10px;" 
+                                (click)="open(agenda.horaInicio)"
+                                [disabled]="agenda.status?.codigo == '1'">
                            {{agenda.horaInicio}}
                         </button>
                      </div>

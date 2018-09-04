@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationsComponent } from '../../notifications/notifications.component';
-import { Router } from '@angular/router';
 
 import { Agenda } from '../agenda.model';
 import { AgendaService } from '../agenda.service';
 import { AGENDADO } from '../status-agenda.model';
+import { AgendaComponent } from '../agenda.component';
 
 @Component({
    selector: 'app-agenda-confirmacao',
@@ -14,9 +14,9 @@ import { AGENDADO } from '../status-agenda.model';
 export class AgendaConfirmacaoComponent implements OnInit {
 
    @Input() agenda = {} as Agenda;
+   @Input() agendaComponent = {} as AgendaComponent;
 
    constructor(private activeModal: NgbActiveModal,
-               private router: Router,
                private agendaService: AgendaService,
                private notification: NotificationsComponent) { }
 
@@ -25,7 +25,8 @@ export class AgendaConfirmacaoComponent implements OnInit {
 
    salvar() {
       this.agenda.status = AGENDADO;
-      this.agendaService.save(this.agenda)
+      this.agendaService.save(this.agenda);
+      this.agendaComponent.changeFuncionario();
       this.notification.showSuccessMessage('Salvo com sucesso!');
       this.activeModal.dismiss();
    }

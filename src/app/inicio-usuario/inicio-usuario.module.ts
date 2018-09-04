@@ -13,6 +13,7 @@ import { AgendaConfirmacaoComponent } from '../agenda/agenda-confirmacao/agenda-
 import { ServicoService } from '../cadastro/servico/servico.service';
 import { FuncionarioService } from '../cadastro/funcionario/funcionario.service';
 import { AgendaService } from '../agenda/agenda.service';
+import { AgendaDetailComponent } from '../agenda/agenda-detail/agenda-detail.component';
 
 @NgModule({
    imports: [
