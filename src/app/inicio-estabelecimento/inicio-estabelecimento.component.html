@@ -23,7 +23,7 @@
    <div class="card-block">
       <div class="row">
          <div class="col-sm-12">
-            <div class="card table-card widget-primary-card" *ngFor="let agenda of agendas" (click)="open(agenda)">
+            <div class="card table-card widget-{{agenda.status?.codigo == 1? 'primary-card' : 'success-card'}}" *ngFor="let agenda of agendas" (click)="open(agenda)">
                <div class="row-table">
                   <div class="col-sm-3 card-block-big">
                      <h4>{{agenda.horaInicio}}</h4>

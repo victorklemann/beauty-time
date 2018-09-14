@@ -27,6 +27,7 @@ export class FuncionarioNovoComponent implements OnInit {
    @Input() usuarios = [] as Usuario[];
    tipoUsuario = [] as TipoUsuario[];
    servicos = [] as Servico[];
+   maskHorario = [/[0-2]/, /\d/, ':', /[0-5]/, /\d/];
 
    ngOnInit() {
       this.servicoService.servicos().subscribe(servicos => this.servicos = servicos);
@@ -38,9 +39,9 @@ export class FuncionarioNovoComponent implements OnInit {
             if (this.funcionario.servicos !== undefined) {
                this.servicos = this.funcionario.servicos;
             }
-         });     
+         });
       }
-      
+
       this.usuarioService.usuarios().subscribe(usuarios => this.usuarios = usuarios);
       this.tipoUsuario = TIPOS_USUARIO;
    }

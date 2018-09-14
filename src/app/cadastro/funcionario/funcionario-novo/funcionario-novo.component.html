@@ -43,12 +43,12 @@
                               <div class="row">
                                  <label class="col-form-label">A partir de</label>
                                  <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="expedienteDe" [(ngModel)]="funcionario.expedienteDe">
+                                    <input type="text" [textMask]="{mask: maskHorario}" class="form-control" [(ngModel)]="funcionario.expedienteDe" name="expedienteDe" />
                                  </div>
 
                                  <label class="col-form-label">até</label>
                                  <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="expedienteAte" [(ngModel)]="funcionario.expedienteAte">
+                                    <input type="text" [textMask]="{mask: maskHorario}" class="form-control" name="expedienteAte" [(ngModel)]="funcionario.expedienteAte">
                                  </div>
                               </div>
                            </div>
@@ -67,12 +67,12 @@
                               <div class="row">
                                  <label class="col-form-label">A partir de</label>
                                  <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="intervaloDe" [(ngModel)]="funcionario.intervaloDe">
+                                    <input type="text" [textMask]="{mask: maskHorario}" class="form-control" name="intervaloDe" [(ngModel)]="funcionario.intervaloDe">
                                  </div>
 
                                  <label class="col-form-label">até</label>
                                  <div class="col-sm-4">
-                                    <input type="text" class="form-control" name="intervaloAte" [(ngModel)]="funcionario.intervaloAte">
+                                    <input type="text" [textMask]="{mask: maskHorario}" class="form-control" name="intervaloAte" [(ngModel)]="funcionario.intervaloAte">
                                  </div>
                               </div>
                            </div>

@@ -20,6 +20,7 @@ import { FirebaseConfig } from '../environments/firebase.config';
 import { FormsModule } from '@angular/forms';
 import { DataBaseService } from './general/database.service';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -38,11 +39,12 @@ import { NotificationsComponent } from './notifications/notifications.component'
     FormsModule,
     ScrollModule,
     AngularFireModule.initializeApp(FirebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    TextMaskModule
   ],
   exports: [ScrollModule],
-  providers: [ 
-    DataBaseService, 
+  providers: [
+    DataBaseService,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
     NotificationsComponent
   ],

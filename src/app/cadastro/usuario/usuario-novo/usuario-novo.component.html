@@ -33,7 +33,7 @@
                <label class="col-form-label">Telefone</label>
                <div class="row">
                   <div class="col-sm-12">
-                     <input type="text" class="form-control" name="telefone" [(ngModel)]="usuario.telefone">
+                     <input type="text" [textMask]="{mask: maskTelefone}" class="form-control" name="telefone" [(ngModel)]="usuario.telefone">
                   </div>
                </div>
 

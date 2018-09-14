@@ -40,7 +40,7 @@
             <label class="col-form-label">Serviço</label>
             <select class="form-control" name="servico" (change)="changeServico()" [(ngModel)]="agenda.servico">
                <option value="-1" selected="selected">- Selecione -</option>
-               <option *ngFor="let servico of servicos" [ngValue]="servico">{{servico.descricao}}</option>
+               <option *ngFor="let servico of servicos" [ngValue]="servico">{{servico.nome}}</option>
             </select>
          </div>
 
@@ -79,8 +79,8 @@
                <div class="card-block">
                   <div class="row">
                      <div class="col-sm-4" *ngFor="let agenda of agendas">
-                        <button class="btn btn-{{ agenda.status?.codigo == '1' ? 'danger' : 'success' }} btn-block" 
-                                style="margin-bottom: 10px;" 
+                        <button class="btn btn-{{ agenda.status?.codigo == '1' ? 'danger' : 'success' }} btn-block"
+                                style="margin-bottom: 10px;"
                                 (click)="open(agenda.horaInicio)"
                                 [disabled]="agenda.status?.codigo == '1'">
                            {{agenda.horaInicio}}

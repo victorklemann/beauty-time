@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { CadastroRoutes } from './cadastro.routing';
 
@@ -21,7 +22,8 @@ import { FuncionarioService } from './funcionario/funcionario.service';
   imports: [
     CommonModule,
     RouterModule.forChild(CadastroRoutes),
-    SharedModule
+    SharedModule,
+    TextMaskModule
   ],
   declarations: [
     CadastroComponent,

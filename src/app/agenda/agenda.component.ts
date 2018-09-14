@@ -60,26 +60,35 @@ export class AgendaComponent implements OnInit {
       this.agendas = [];
 
       let agendasFuncionario = [];
-      this.agendaService.agendasByFuncionario(this.agenda.funcionario.key).subscribe(response => agendasFuncionario = response);
+      let funcionario = this.agenda.funcionario;
 
-      let horario = moment('08:30', 'HH:mm');
-      for (let index = 0; index < 21; index++) {
-         let agenda = _.find(this.allAgendas, { horaInicio: horario.format('HH:mm'),
-                                                funcionarioKey: this.agenda.funcionario.key }) as Agenda;
+      this.agendaService.agendasByFuncionario(funcionario.key).subscribe(response => agendasFuncionario = response);
+
+      let horarioInicio = moment(funcionario.expedienteDe, 'HH:mm');
+      let horarioFim = moment(funcionario.expedienteAte, 'HH:mm');
+      while (horarioInicio.isSameOrBefore(horarioFim)) {
+         let agenda = _.find(this.allAgendas, { horaInicio: horarioInicio.format('HH:mm'),
+                                                funcionarioKey: funcionario.key }) as Agenda;
 
          if (agenda === undefined) {
             agenda = {} as Agenda;
-            agenda.horaInicio = horario.format('HH:mm');
+            agenda.horaInicio = horarioInicio.format('HH:mm');
          }
 
-         this.agendas.push(agenda);
-         horario = horario.add(30, 'minutes');
-      }      
+
+         if (horarioInicio.isSameOrAfter(moment(funcionario.intervaloDe, 'HH:mm')) && horarioInicio.isBefore(moment(funcionario.intervaloAte, 'HH:mm'))) {
+            horarioInicio = horarioInicio.add(30, 'minutes');
+            continue;
+         } else {
+            this.agendas.push(agenda);
+         }
+         horarioInicio = horarioInicio.add(30, 'minutes');
+      }
    }
 
    open(horario: string) {
       let modal = this.modal.open(AgendaConfirmacaoComponent);
-      
+
       this.agenda.data = this.data;
 
       let servico = _.findWhere(this.servicos, {key: this.agenda.servico.key})

@@ -26,6 +26,8 @@ export class UsuarioNovoComponent implements OnInit {
    private estados = ESTADOS;
    private cidades = CIDADES;
    private sexos = SEXOS;
+   maskTelefone = ['(', /[1-9]/, /\d/, ')', ' ', /\d/, ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
+
 
    ngOnInit() {
       let route = this.route.snapshot.params['key']
