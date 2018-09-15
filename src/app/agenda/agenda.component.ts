@@ -9,6 +9,9 @@ import { Servico } from '../cadastro/servico/servico.model';
 import { Funcionario } from '../cadastro/funcionario/funcionario.model';
 import { Agenda } from './agenda.model';
 import { AgendaService } from './agenda.service';
+import { ShopProfileService } from '../profile/shop-profile/shop-profile.service';
+import { Estabelecimento } from '../profile/shop-profile/shop-profile.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
    selector: 'app-agenda',
@@ -28,12 +31,21 @@ export class AgendaComponent implements OnInit {
    data: string;
    diaSemana: string;
 
+   estabelecimento = {} as Estabelecimento;
+
    constructor(private modal: NgbModal,
+               private shopService: ShopProfileService,
                private servicoService: ServicoService,
                private funcionarioService: FuncionarioService,
-               private agendaService: AgendaService) { }
+               private agendaService: AgendaService,
+               private route: ActivatedRoute) { }
 
    ngOnInit() {
+      let route = this.route.snapshot.params['key']
+      if (route != undefined) {
+         this.shopService.estabelecimentoById(route).subscribe(estabelecimento => this.estabelecimento = estabelecimento)
+      }
+
       this.servicoService.servicos().subscribe(servicos => this.servicos = servicos);
       this.refreshFuncionarios();
       this.agendaService.agendas().subscribe(agendas => this.allAgendas = agendas);

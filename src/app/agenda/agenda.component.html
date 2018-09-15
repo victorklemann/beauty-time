@@ -15,7 +15,7 @@
                         <div class="media-body row">
                            <div class="col-lg-12">
                               <div class="user-title">
-                                 <h2>aaaa</h2>
+                                 <h2>{{estabelecimento.nome}}</h2>
                                  <span class="text-white">Salão de Beleza</span>
                               </div>
                            </div>
@@ -30,7 +30,7 @@
       <div class="row">
          <div class="col-sm-12">
             <div class="pull-right">
-               <span>Jaraguá do Sul / SC (12KM)</span>
+               <span>{{estabelecimento.cidade?.nome + ' / ' + estabelecimento.cidade?.estado?.sigla + ' (12KM)'}}</span>
             </div>
          </div>
       </div>

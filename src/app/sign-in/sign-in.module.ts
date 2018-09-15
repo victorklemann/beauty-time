@@ -8,16 +8,18 @@ import { SharedModule } from '../shared/shared.module';
 
 import { ShopComponent } from './shop/shop.component';
 import { UserComponent } from './user/user.component';
+import { SignInComponent } from './sign-in.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(SignInRoutes),
-    SharedModule
-  ],
-  declarations: [
-    ShopComponent,
-    UserComponent
-  ]
+   imports: [
+      CommonModule,
+      RouterModule.forChild(SignInRoutes),
+      SharedModule
+   ],
+   declarations: [
+      SignInComponent,
+      ShopComponent,
+      UserComponent
+   ]
 })
 export class SignInModule { }
