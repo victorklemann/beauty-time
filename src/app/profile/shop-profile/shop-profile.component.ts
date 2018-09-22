@@ -13,7 +13,7 @@ import { CIDADES } from '../../general/cidade.model';
 })
 export class ShopProfileComponent implements OnInit {
 
-   @Input() estabelecimento = {} as Estabelecimento;
+   estabelecimento = {} as Estabelecimento;
    estado: Estado;
    isEditing: boolean = false;
    activeTab: string = 'sobre';

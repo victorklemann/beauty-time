@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 import { SignInRoutes } from './sign-in.routing';
 
-import { SharedModule } from '../shared/shared.module';
+import { ShopProfileService } from '../profile/shop-profile/shop-profile.service';
+import { UsuarioService } from '../cadastro/usuario/usuario.service';
 
 import { ShopComponent } from './shop/shop.component';
 import { UserComponent } from './user/user.component';
 import { SignInComponent } from './sign-in.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
    imports: [
@@ -19,7 +22,9 @@ import { SignInComponent } from './sign-in.component';
    declarations: [
       SignInComponent,
       ShopComponent,
-      UserComponent
-   ]
+      UserComponent,
+      LoginComponent
+   ],
+   providers: [ UsuarioService, ShopProfileService ]
 })
 export class SignInModule { }

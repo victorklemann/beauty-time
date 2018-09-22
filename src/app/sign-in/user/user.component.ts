@@ -1,14 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from '../../cadastro/usuario/usuario.model';
+import { UsuarioService } from '../../cadastro/usuario/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html'
+   selector: 'app-user',
+   templateUrl: './user.component.html'
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+   usuario = {} as Usuario;
 
-  ngOnInit() {
-  }
+   constructor(private usuarioService: UsuarioService,
+               private router: Router) { }
+
+   ngOnInit() {}
+
+   salvar() {
+      this.usuarioService.save(this.usuario);
+      this.router.navigate(['/cadastro/usuario']);
+   }
 
 }

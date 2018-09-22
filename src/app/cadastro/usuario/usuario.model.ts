@@ -1,7 +1,7 @@
 import { Cidade } from "../../general/cidade.model";
 import { Sexo } from "../../general/sexo.model";
 
-export interface Usuario {
+export class Usuario {
 
    key: string;
    usuario: string;
@@ -13,5 +13,12 @@ export interface Usuario {
    cep: string;
    endereco: string;
    cidade: Cidade;
+   estabelecimentoKey: string;
+
+   matches(another: Usuario): boolean {
+      return another !== undefined &&
+         another.email === this.email &&
+         another.senha === this.senha
+   }
 
 }

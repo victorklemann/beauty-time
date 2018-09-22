@@ -9,11 +9,11 @@ export class DataBaseService {
 
    constructor() { }
 
-   save(objects: AngularFireList<any[]>, object: any) {
+   save(objects: AngularFireList<any[]>, object: any): Observable<any> {
       if (object.key == null) {
-         objects.push(object)
+         return Observable.of(objects.push(object));
       } else {
-         objects.update(object.key, object)
+         return Observable.of(objects.update(object.key, object));
       }
    }
 

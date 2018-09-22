@@ -16,33 +16,28 @@
                      <p class="text-inverse b-b-default text-left p-b-5">Informe os dados nos campos abaixo</p>
 
                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Nome">
+                        <input type="text" class="form-control" name="nome" placeholder="Nome" [(ngModel)]="estabelecimento.nome">
                         <span class="md-line"></span>
                      </div>
 
                      <div class="input-group">
-                        <input type="email" class="form-control" placeholder="E-mail">
+                        <input type="text" class="form-control" name="email" placeholder="E-mail" [(ngModel)]="estabelecimento.email">
                         <span class="md-line"></span>
                      </div>
 
                      <div class="input-group">
-                        <input type="password" class="form-control" placeholder="Senha">
+                        <input type="text" class="form-control" name="usuario" placeholder="Usuário" [(ngModel)]="usuario.usuario">
                         <span class="md-line"></span>
                      </div>
 
                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Nome do Salão">
-                        <span class="md-line"></span>
-                     </div>
-
-                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Telefone">
+                        <input type="password" class="form-control" name="senha" placeholder="Senha" [(ngModel)]="usuario.senha">
                         <span class="md-line"></span>
                      </div>
 
                      <div class="row m-t-30">
                         <div class="col-md-12">
-                           <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Cadastrar</button>
+                           <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" (click)="salvar()">Cadastrar</button>
                         </div>
                      </div>
                   </div>

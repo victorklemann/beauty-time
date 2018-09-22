@@ -11,7 +11,7 @@ export class UsuarioService {
    path: string = 'usuarios'
    list: AngularFireList<Usuario[]>
 
-   constructor(private afd: AngularFireDatabase, private dbService: DataBaseService) { 
+   constructor(private afd: AngularFireDatabase, private dbService: DataBaseService) {
       this.refresh()
    }
 
@@ -26,13 +26,17 @@ export class UsuarioService {
    delete(keyUsuario: string) {
       this.dbService.delete(this.list, keyUsuario)
    }
-   
+
    usuarios() {
       return this.dbService.list(this.list);
    }
 
    usuarioById(key: string): Observable<Usuario> {
       return this.dbService.objectById(this.afd.object(`/${this.path}/${key}`))
+   }
+
+   authentication(usuario: string, senha: string): Observable<Usuario[]> {
+      return this.afd.list(this.path, ref => ref.orderByChild('usuario').equalTo(usuario) && ref.orderByChild('senha').equalTo(senha)).valueChanges();
    }
 
 }

@@ -21,7 +21,7 @@ export class UsuarioNovoComponent implements OnInit {
       private router: Router,
       private notification: NotificationsComponent) { }
 
-   @Input() usuario = {} as Usuario
+   usuario = {} as Usuario
    estado: any;
    private estados = ESTADOS;
    private cidades = CIDADES;

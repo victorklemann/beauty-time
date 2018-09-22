@@ -19,8 +19,8 @@ export class ShopProfileService {
       this.list = this.afd.list(this.path)
    }
 
-   save(estabelecimento: Estabelecimento) {
-      this.dbService.save(this.list, estabelecimento)
+   save(estabelecimento: Estabelecimento): Observable<Estabelecimento> {
+      return this.dbService.save(this.list, estabelecimento);
    }
 
    delete(keyEstabelecimento: string) {

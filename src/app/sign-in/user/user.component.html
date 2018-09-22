@@ -16,28 +16,28 @@
                      <p class="text-inverse b-b-default text-left p-b-5">Informe seus dados nos campos abaixo</p>
 
                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Usuário">
+                        <input type="text" class="form-control" placeholder="Usuário" name="usuario" [(ngModel)]="usuario.usuario">
                         <span class="md-line"></span>
                      </div>
 
                      <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Nome">
+                        <input type="text" class="form-control" placeholder="Nome" name="nome" [(ngModel)]="usuario.nome">
                         <span class="md-line"></span>
                      </div>
 
                      <div class="input-group">
-                        <input type="email" class="form-control" placeholder="E-mail">
+                        <input type="email" class="form-control" placeholder="E-mail" name="email" [(ngModel)]="usuario.email">
                         <span class="md-line"></span>
                      </div>
 
                      <div class="input-group">
-                        <input type="password" class="form-control" placeholder="Senha">
+                        <input type="password" class="form-control" placeholder="Senha" name="senha" [(ngModel)]="usuario.senha">
                         <span class="md-line"></span>
                      </div>
 
                      <div class="row m-t-30">
                         <div class="col-md-12">
-                           <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Cadastrar</button>
+                           <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" (click)="salvar()">Cadastrar</button>
                         </div>
                      </div>
                   </div>
