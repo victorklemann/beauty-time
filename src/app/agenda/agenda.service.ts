@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Observable'
 import { DataBaseService } from '../general/database.service';
-import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireList, AngularFireDatabase } from 'angularfire2/database'
 
 import { Agenda } from './agenda.model';
+import { LoginService } from '../sign-in/login/login.service';
 
 @Injectable()
 export class AgendaService {
@@ -11,7 +12,9 @@ export class AgendaService {
    path: string = 'agendas'
    list: AngularFireList<Agenda[]>
 
-   constructor(private afd: AngularFireDatabase, private dbService: DataBaseService) {
+   constructor(private afd: AngularFireDatabase,
+               private dbService: DataBaseService,
+               private loginService: LoginService) {
       this.refresh()
    }
 
@@ -20,7 +23,10 @@ export class AgendaService {
    }
 
    save(agenda: Agenda) {
-      this.dbService.save(this.list, agenda)
+      if (this.loginService.isLoggedIn) {
+         agenda.cliente = this.loginService.user
+         this.dbService.save(this.list, agenda)
+      }
    }
 
    delete(keyAgenda: string) {

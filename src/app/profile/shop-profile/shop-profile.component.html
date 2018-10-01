@@ -13,7 +13,7 @@
                   <div class="media-body row">
                      <div class="col-lg-12">
                         <div class="user-title">
-                           <h2>{{estabelecimento.nome}}</h2>
+                           <h2>{{estabelecimento?.nome}}</h2>
                            <span class="text-white">Salão de Beleza</span>
                         </div>
                      </div>
@@ -65,24 +65,24 @@
                                        <tbody>
                                           <tr>
                                              <th scope="row">Nome:</th>
-                                             <td>{{estabelecimento.nome}}</td>
+                                             <td>{{estabelecimento?.nome}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">Telefone:</th>
-                                             <td>{{estabelecimento.telefone}}</td>
+                                             <td>{{estabelecimento?.telefone}}</td>
                                           </tr>
 
                                           <tr>
                                              <th scope="row">CEP:</th>
-                                             <td>{{estabelecimento.cep}}</td>
+                                             <td>{{estabelecimento?.cep}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">Estado:</th>
-                                             <td>{{estabelecimento.cidade?.estado?.nome}}</td>
+                                             <td>{{estabelecimento?.cidade?.estado?.nome}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">Endereço:</th>
-                                             <td>{{estabelecimento.endereco}}</td>
+                                             <td>{{estabelecimento?.endereco}}</td>
                                           </tr>
                                        </tbody>
                                     </table>
@@ -93,12 +93,12 @@
                                        <tbody>
                                           <tr>
                                              <th scope="row">E-mail:</th>
-                                             <td>{{estabelecimento.email}}</td>
+                                             <td>{{estabelecimento?.email}}</td>
                                           </tr>
 
                                           <tr>
                                              <th scope="row">Celular:</th>
-                                             <td>{{estabelecimento.celular}}</td>
+                                             <td>{{estabelecimento?.celular}}</td>
                                           </tr>
 
                                           <tr>
@@ -107,11 +107,11 @@
                                           </tr>
                                           <tr>
                                              <th scope="row">Cidade:</th>
-                                             <td>{{estabelecimento.cidade?.nome}}</td>
+                                             <td>{{estabelecimento?.cidade?.nome}}</td>
                                           </tr>
                                           <tr>
                                              <th scope="row">Número</th>
-                                             <td>{{estabelecimento.numero}}</td>
+                                             <td>{{estabelecimento?.numero}}</td>
                                           </tr>
                                        </tbody>
                                     </table>

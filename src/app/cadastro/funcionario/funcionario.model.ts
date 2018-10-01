@@ -5,7 +5,7 @@ import { Servico } from "../servico/servico.model";
 export interface Funcionario {
 
    key: string;
-   codigo: string;
+   usuarioKey: string;
    usuario: Usuario;
    tipoUsuario: TipoUsuario;
    expedienteDe: Date;

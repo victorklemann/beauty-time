@@ -7,6 +7,8 @@ import { SignInRoutes } from './sign-in.routing';
 
 import { ShopProfileService } from '../profile/shop-profile/shop-profile.service';
 import { UsuarioService } from '../cadastro/usuario/usuario.service';
+import { LoginService } from './login/login.service';
+import { FuncionarioService } from '../cadastro/funcionario/funcionario.service';
 
 import { ShopComponent } from './shop/shop.component';
 import { UserComponent } from './user/user.component';
@@ -25,6 +27,6 @@ import { LoginComponent } from './login/login.component';
       UserComponent,
       LoginComponent
    ],
-   providers: [ UsuarioService, ShopProfileService ]
+   providers: [ UsuarioService, ShopProfileService, LoginService, FuncionarioService ]
 })
 export class SignInModule { }

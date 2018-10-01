@@ -6,6 +6,7 @@ import { ShopProfileService } from './shop-profile.service';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { ESTADOS, Estado } from '../../general/estado.model';
 import { CIDADES } from '../../general/cidade.model';
+import { LoginService } from '../../sign-in/login/login.service';
 
 @Component({
    selector: 'app-shop-profile',
@@ -22,14 +23,17 @@ export class ShopProfileComponent implements OnInit {
    private cidades = CIDADES;
 
    constructor(private shopProfileService: ShopProfileService,
+               private loginService: LoginService,
                private notification: NotificationsComponent) {
    }
 
    ngOnInit() {
-      this.shopProfileService.estabelecimentoById("-LLIMLPjdK6ZjSbO_CKt").subscribe(estabelecimento => {
-         this.estabelecimento = estabelecimento;
-         this.estado = estabelecimento.cidade.estado;
-      });
+      this.estabelecimento = this.loginService.estabelecimento;
+      console.log(this.estabelecimento);
+
+      // if (this.estabelecimento.cidade !== null && this.estabelecimento.cidade.estado !== null) {
+      //    this.estado = this.estabelecimento.cidade.estado;
+      // }
    }
 
    salvar() {

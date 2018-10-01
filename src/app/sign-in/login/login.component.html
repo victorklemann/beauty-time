@@ -16,17 +16,13 @@
                         <p class="text-inverse b-b-default text-left p-b-5">Preencha os campos abaixo</p>
 
                         <div class="input-group">
-                           <input type="text" class="form-control {{invalidUser ? 'form-control-danger' : ''}}" placeholder="Usuário" name="usuario" [(ngModel)]="usuario.usuario">
+                           <input type="text" class="form-control" placeholder="Usuário" name="usuario" [(ngModel)]="usuario.usuario">
                            <span class="md-line"></span>
                         </div>
 
                         <div class="input-group">
-                           <input type="password" class="form-control {{invalidPassword ? 'form-control-danger' : ''}}" placeholder="Senha" name="senha" [(ngModel)]="usuario.senha">
+                           <input type="password" class="form-control" placeholder="Senha" name="senha" [(ngModel)]="usuario.senha">
                            <span class="md-line"></span>
-                        </div>
-
-                        <div class="input-group">
-                           <p class="p-b-5 text-danger pull-center" *ngIf="invalidLogin">Dados inválidos!</p>
                         </div>
 
                         <div class="row m-t-30">

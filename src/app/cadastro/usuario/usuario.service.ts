@@ -19,8 +19,8 @@ export class UsuarioService {
       this.list = this.afd.list(this.path)
    }
 
-   save(usuario: Usuario) {
-      this.dbService.save(this.list, usuario)
+   save(usuario: Usuario): Observable<Usuario> {
+      return this.dbService.save(this.list, usuario)
    }
 
    delete(keyUsuario: string) {
@@ -33,10 +33,6 @@ export class UsuarioService {
 
    usuarioById(key: string): Observable<Usuario> {
       return this.dbService.objectById(this.afd.object(`/${this.path}/${key}`))
-   }
-
-   authentication(usuario: string, senha: string): Observable<Usuario[]> {
-      return this.afd.list(this.path, ref => ref.orderByChild('usuario').equalTo(usuario) && ref.orderByChild('senha').equalTo(senha)).valueChanges();
    }
 
 }

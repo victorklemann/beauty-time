@@ -9,6 +9,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsuarioService } from '../cadastro/usuario/usuario.service';
 import { ShopProfileComponent } from './shop-profile/shop-profile.component';
 import { ShopProfileService } from './shop-profile/shop-profile.service';
+import { LoginService } from '../sign-in/login/login.service';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { ShopProfileService } from './shop-profile/shop-profile.service';
      UserProfileComponent,
      ShopProfileComponent
   ],
-  providers: [ UsuarioService, ShopProfileService ]
+  providers: [ UsuarioService, ShopProfileService, LoginService ]
 })
 export class ProfileModule { }
