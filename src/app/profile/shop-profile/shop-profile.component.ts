@@ -28,8 +28,8 @@ export class ShopProfileComponent implements OnInit {
    }
 
    ngOnInit() {
-      this.estabelecimento = this.loginService.estabelecimento;
-      console.log(this.estabelecimento);
+      // this.estabelecimento = this.loginService.estabelecimento;
+      console.log(this.loginService);
 
       // if (this.estabelecimento.cidade !== null && this.estabelecimento.cidade.estado !== null) {
       //    this.estado = this.estabelecimento.cidade.estado;

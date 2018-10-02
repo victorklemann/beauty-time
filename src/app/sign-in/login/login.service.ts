@@ -10,8 +10,8 @@ import { Estabelecimento } from '../../profile/shop-profile/shop-profile.model';
 @Injectable()
 export class LoginService {
 
-   @Input() user: Usuario
-   @Input() estabelecimento: Estabelecimento
+   user: Usuario
+   estabelecimento: Estabelecimento
 
    path: string = 'usuarios'
    list: AngularFireList<Usuario[]>

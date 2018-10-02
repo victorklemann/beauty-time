@@ -39,13 +39,13 @@ export class LoginComponent implements OnInit {
                }
 
                this.notification.showSuccessMessage("Bem vindo, " + user.nome)
-               console.log(this.loginService.estabelecimento);
                this.router.navigate(['/cadastro'])
             } else {
                this.notification.showErrorMessage("Dados inválidos")
             }
          })
       })
+
    }
 }
 

@@ -8,15 +8,13 @@ import { ServicoNovoComponent } from './servico/servico-novo/servico-novo.compon
 
 import { FuncionarioComponent } from './funcionario/funcionario.component';
 import { FuncionarioNovoComponent } from './funcionario/funcionario-novo/funcionario-novo.component';
+import { CadastroComponent } from './cadastro.component';
 
 export const CadastroRoutes: Routes = [
     {
         path: '',
-        data: {
-            breadcrumb: 'Cadastro',
-            status: false
-        },
         children: [
+            { path: '', component: CadastroComponent, data: {breadcrumb: 'Cadastro', status: false} },
             { path: 'usuario', component: UsuarioComponent, data: { breadcrumb: 'Usuário', status: false } },
             { path: 'usuario/novo', component: UsuarioNovoComponent, data: { breadcrumb: 'Usuário', status: false } },
             { path: 'usuario/novo/:key', component: UsuarioNovoComponent, data: { breadcrumb: 'Usuário', status: false } },

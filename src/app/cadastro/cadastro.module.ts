@@ -17,6 +17,7 @@ import { FuncionarioNovoComponent } from './funcionario/funcionario-novo/funcion
 import { UsuarioService } from './usuario/usuario.service';
 import { ServicoService } from './servico/servico.service';
 import { FuncionarioService } from './funcionario/funcionario.service';
+import { LoginService } from '../sign-in/login/login.service';
 
 @NgModule({
   imports: [
@@ -34,6 +35,6 @@ import { FuncionarioService } from './funcionario/funcionario.service';
     FuncionarioComponent,
     FuncionarioNovoComponent
   ],
-  providers: [ UsuarioService, ServicoService, FuncionarioService ]
+  providers: [ UsuarioService, ServicoService, FuncionarioService, LoginService ]
 })
 export class CadastroModule { }
