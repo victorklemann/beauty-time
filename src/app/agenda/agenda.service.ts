@@ -24,7 +24,7 @@ export class AgendaService {
 
    save(agenda: Agenda) {
       if (this.loginService.isLoggedIn) {
-         agenda.cliente = this.loginService.user
+         agenda.cliente = this.loginService.getUser()
          this.dbService.save(this.list, agenda)
       }
    }

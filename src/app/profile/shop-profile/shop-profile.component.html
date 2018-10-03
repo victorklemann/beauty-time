@@ -166,7 +166,7 @@
                                              <label class="col-form-label">Estado</label>
                                              <select class="form-control" name="estado" (change)="changeEstado()" [(ngModel)]="estado" [compareWith]="equals">
                                                 <option value="-1" selected="selected">- Selecione -</option>
-                                                <option *ngFor="let estado of estados" [ngValue]="estado">{{estado.nome}}</option>
+                                                <option *ngFor="let estado of estados" [ngValue]="estado">{{estado?.nome}}</option>
                                              </select>
                                           </div>
 
@@ -174,7 +174,7 @@
                                              <label class="col-form-label">Cidade</label>
                                              <select class="form-control" name="cidade" [(ngModel)]="estabelecimento.cidade" [compareWith]="equals">
                                                 <option value="-1" selected="selected">- Selecione -</option>
-                                                <option *ngFor="let cidade of cidades" [ngValue]="cidade">{{cidade.nome}}</option>
+                                                <option *ngFor="let cidade of cidades" [ngValue]="cidade">{{cidade?.nome}}</option>
                                              </select>
                                           </div>
                                        </div>

@@ -31,10 +31,10 @@ export class LoginComponent implements OnInit {
          response.map(action => {
             let user = action.payload.val()
             if (user.senha === this.usuario.senha) {
-               this.loginService.user = user
+               this.loginService.setUser(user)
                if (user.estabelecimentoKey !== null) {
-                  this.estabelecimentoService.estabelecimentoById(user.estabelecimentoKey).subscribe(response => {
-                     this.loginService.estabelecimento = response
+                  this.estabelecimentoService.estabelecimentoById(user.estabelecimentoKey).subscribe(estabelecimento => {
+                     this.loginService.setEstabelecimento(estabelecimento)
                   })
                }
 

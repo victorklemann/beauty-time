@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../sign-in/login/login.service';
 
 @Component({
    selector: 'app-cadastro',
@@ -7,10 +6,8 @@ import { LoginService } from '../sign-in/login/login.service';
 })
 export class CadastroComponent implements OnInit {
 
-   constructor(private loginService: LoginService) { }
+   constructor() { }
 
-   ngOnInit() {
-      console.log(this.loginService);
-   }
+   ngOnInit() { }
 
 }

@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { DataBaseService } from './general/database.service';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { TextMaskModule } from 'angular2-text-mask';
+import { LoginService } from './sign-in/login/login.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { TextMaskModule } from 'angular2-text-mask';
   providers: [
     DataBaseService,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
-    NotificationsComponent
+    NotificationsComponent,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

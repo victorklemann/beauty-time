@@ -48,7 +48,7 @@
                               </a>
                            </li>
                            <li>
-                              <a [routerLink]="['/sign-in']">
+                              <a (click)="exit()">
                                  <i class="ti-layout-sidebar-left"></i> Sair
                               </a>
                            </li>
@@ -94,8 +94,8 @@
                                  <i class="ti-settings"></i>Configurações
                               </a>
 
-                              <a [routerLink]="['/sign-in']">
-                                 <i class="ti-layout-sidebar-left"></i>Sair
+                              <a (click)="exit()">
+                                 <i class="ti-layout-sidebar-left"></i> Sair
                               </a>
                            </li>
                         </ul>

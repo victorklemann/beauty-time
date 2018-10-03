@@ -1,4 +1,4 @@
-import { Injectable, Input } from '@angular/core'
+import { Injectable } from '@angular/core'
 
 import 'rxjs/add/operator/do'
 import * as _ from 'underscore'
@@ -10,13 +10,22 @@ import { Estabelecimento } from '../../profile/shop-profile/shop-profile.model';
 @Injectable()
 export class LoginService {
 
-   user: Usuario
-   estabelecimento: Estabelecimento
+   private user: Usuario
+   private estabelecimento: Estabelecimento
 
    path: string = 'usuarios'
    list: AngularFireList<Usuario[]>
 
    constructor(private afd: AngularFireDatabase) {
+      let currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
+      if (currentUser !== undefined) {
+         this.setUser(currentUser)
+      }
+
+      let currentShop = JSON.parse(sessionStorage.getItem('currentShop'))
+      if (currentShop !== undefined) {
+         this.setEstabelecimento(currentShop)
+      }
    }
 
    isLoggedIn(): boolean {
@@ -27,6 +36,32 @@ export class LoginService {
       this.user = undefined
       this.estabelecimento = undefined
       return this.afd.list(`/${this.path}`, ref => ref.orderByChild('usuario').equalTo(usuario)).snapshotChanges()
+   }
+
+   exit() {
+      this.user = undefined
+      sessionStorage.removeItem('currentUser')
+
+      this.estabelecimento = undefined
+      sessionStorage.removeItem('currentShop')
+   }
+
+   setUser(user: Usuario) {
+      this.user = user
+      sessionStorage.setItem('currentUser', JSON.stringify(this.user))
+   }
+
+   getUser(): Usuario {
+      return this.user
+   }
+
+   setEstabelecimento(estabelecimento: Estabelecimento) {
+      this.estabelecimento = estabelecimento
+      sessionStorage.setItem('currentShop', JSON.stringify(this.estabelecimento))
+   }
+
+   getEstabelecimento(): Estabelecimento {
+      return this.estabelecimento
    }
 
 }

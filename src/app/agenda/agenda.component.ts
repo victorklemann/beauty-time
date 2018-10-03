@@ -12,6 +12,7 @@ import { AgendaService } from './agenda.service';
 import { ShopProfileService } from '../profile/shop-profile/shop-profile.service';
 import { Estabelecimento } from '../profile/shop-profile/shop-profile.model';
 import { ActivatedRoute } from '@angular/router';
+import { TIPOS_DURACAO, HORAS } from '../cadastro/servico/servico.tipo-duracao.model';
 
 @Component({
    selector: 'app-agenda',
@@ -87,7 +88,6 @@ export class AgendaComponent implements OnInit {
             agenda.horaInicio = horarioInicio.format('HH:mm');
          }
 
-
          if (horarioInicio.isSameOrAfter(moment(funcionario.intervaloDe, 'HH:mm')) && horarioInicio.isBefore(moment(funcionario.intervaloAte, 'HH:mm'))) {
             horarioInicio = horarioInicio.add(30, 'minutes');
             continue;
@@ -107,7 +107,12 @@ export class AgendaComponent implements OnInit {
 
       let hora = moment(horario, 'HH:mm');
       let horaInicio = hora.format('HH:mm');
-      let horaFim = hora.add(servico.duracao, 'minutes').format('HH:mm');
+
+      let duracao: moment.DurationInputArg2 = moment().hours
+      if (servico.tipoDuracao === HORAS) {
+         duracao = moment().hours
+      }
+      let horaFim = hora.add(servico.duracao, duracao).format('HH:mm');
 
       this.agenda.servicoKey = this.agenda.servico.key;
       this.agenda.funcionarioKey = this.agenda.funcionario.key;

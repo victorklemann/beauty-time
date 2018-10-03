@@ -15,7 +15,8 @@ import { LoginService } from '../../sign-in/login/login.service';
 export class ShopProfileComponent implements OnInit {
 
    estabelecimento = {} as Estabelecimento;
-   estado: Estado;
+   estado = {} as Estado;
+
    isEditing: boolean = false;
    activeTab: string = 'sobre';
 
@@ -28,12 +29,12 @@ export class ShopProfileComponent implements OnInit {
    }
 
    ngOnInit() {
-      // this.estabelecimento = this.loginService.estabelecimento;
-      console.log(this.loginService);
+      this.estabelecimento = this.loginService.getEstabelecimento()
+      console.log(this.estabelecimento);
 
-      // if (this.estabelecimento.cidade !== null && this.estabelecimento.cidade.estado !== null) {
-      //    this.estado = this.estabelecimento.cidade.estado;
-      // }
+      if (this.estabelecimento.cidade !== undefined && this.estabelecimento.cidade.estado !== undefined) {
+         this.estado = this.estabelecimento.cidade.estado;
+      }
    }
 
    salvar() {
@@ -43,8 +44,8 @@ export class ShopProfileComponent implements OnInit {
    }
 
    clear() {
-      this.shopProfileService.estabelecimentoById("-LLIMLPjdK6ZjSbO_CKt").subscribe(estabelecimento =>this.estabelecimento = estabelecimento);
-      this.changeEditing();
+      this.estabelecimento = this.loginService.getEstabelecimento()
+      this.changeEditing()
    }
 
    changeEstado() {
@@ -52,7 +53,7 @@ export class ShopProfileComponent implements OnInit {
    }
 
    changeActiveTab(activeTab) {
-      this.activeTab = activeTab;
+      this.activeTab = activeTab
    }
 
    changeEditing() {
