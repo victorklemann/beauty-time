@@ -80,8 +80,10 @@ export class AgendaComponent implements OnInit {
       let horarioInicio = moment(funcionario.expedienteDe, 'HH:mm');
       let horarioFim = moment(funcionario.expedienteAte, 'HH:mm');
       while (horarioInicio.isSameOrBefore(horarioFim)) {
-         let agenda = _.find(this.allAgendas, { horaInicio: horarioInicio.format('HH:mm'),
-                                                funcionarioKey: funcionario.key }) as Agenda;
+         let agenda = _.find(this.allAgendas, (agenda) => (agenda.horaInicio == horarioInicio.format('HH:mm') ||
+                                                           agenda.horaFim == horarioFim.format('HH:mm') ||
+                                                           (horarioInicio.format('HH:mm') > agenda.horaInicio && horarioInicio.format('HH:mm') < agenda.horaFim)) &&
+                                                           agenda.funcionarioKey === funcionario.key ) as Agenda;
 
          if (agenda === undefined) {
             agenda = {} as Agenda;
@@ -108,11 +110,11 @@ export class AgendaComponent implements OnInit {
       let hora = moment(horario, 'HH:mm');
       let horaInicio = hora.format('HH:mm');
 
-      let duracao: moment.DurationInputArg2 = moment().hours
-      if (servico.tipoDuracao === HORAS) {
-         duracao = moment().hours
+      let duracao: number = servico.duracao
+      if (servico.tipoDuracao.codigo === HORAS.codigo) {
+         duracao = duracao * 60
       }
-      let horaFim = hora.add(servico.duracao, duracao).format('HH:mm');
+      let horaFim = hora.add(duracao, 'minutes').format('HH:mm');
 
       this.agenda.servicoKey = this.agenda.servico.key;
       this.agenda.funcionarioKey = this.agenda.funcionario.key;

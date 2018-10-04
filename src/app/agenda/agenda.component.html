@@ -83,7 +83,8 @@
                                 style="margin-bottom: 10px;"
                                 (click)="open(agenda.horaInicio)"
                                 [disabled]="agenda.status?.codigo == '1'">
-                           {{agenda.horaInicio}}
+                           <span *ngIf="agenda.status?.codigo != '1'">{{agenda.horaInicio}}</span>
+                           <span *ngIf="agenda.status?.codigo == '1'"><i class="icofont icofont-lock"></i></span>
                         </button>
                      </div>
                   </div>
