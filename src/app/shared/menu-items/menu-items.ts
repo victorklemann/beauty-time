@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LoginService } from '../../sign-in/login/login.service';
 
 export interface BadgeItem {
    type: string;
@@ -29,7 +30,7 @@ export interface Menu {
    main: MainMenuItems[];
 }
 
-const MENUITEMS = [
+const MENUITEMS_ESTABELECIMENTO = [
    {
       label: 'Layout',
       main: [
@@ -45,12 +46,8 @@ const MENUITEMS = [
             name: 'Início Salão',
             type: 'link',
             icon: 'ti-home'
-         }, {
-            state: 'inicio-usuario',
-            name: 'Início Usuário',
-            type: 'link',
-            icon: 'ti-home'
-         }, {
+         },
+         {
             state: 'cadastro',
             name: 'Cadastros',
             type: 'sub',
@@ -74,9 +71,37 @@ const MENUITEMS = [
    }
 ];
 
+
+const MENUITEMS_CLIENTE = [
+   {
+      label: 'Layout',
+      main: [
+         {
+            state: 'sign-in',
+            name: 'Usuario',
+            type: 'link',
+            icon: 'ti-home',
+            target: true
+         },
+         {
+            state: 'inicio-usuario',
+            name: 'Início Usuário',
+            type: 'link',
+            icon: 'ti-home'
+         }
+      ]
+   }
+];
+
 @Injectable()
 export class MenuItems {
+
+   constructor(private usuarioService : LoginService) {
+   }
+
    getAll(): Menu[] {
-      return MENUITEMS;
+      let estabelecimento = this.usuarioService.getEstabelecimento()
+      if ((estabelecimento !== undefined) && (estabelecimento !== null)) return MENUITEMS_ESTABELECIMENTO;
+      return MENUITEMS_CLIENTE;
    }
 }

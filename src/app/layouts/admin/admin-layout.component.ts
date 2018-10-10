@@ -59,7 +59,9 @@ export class AdminLayoutComponent implements OnInit {
       this.setMenuAttributs(this.windowWidth);
    }
 
-   ngOnInit() { }
+   ngOnInit() {
+      console.log(this.menuItems)
+   }
 
    exit() {
       this.loginService.exit()
