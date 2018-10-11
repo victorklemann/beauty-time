@@ -6,6 +6,8 @@ import { Observable } from 'rxjs/Observable'
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { Usuario } from '../../cadastro/usuario/usuario.model';
 import { Estabelecimento } from '../../profile/shop-profile/shop-profile.model';
+import { error } from 'protractor';
+import { reject } from 'q';
 
 @Injectable()
 export class LoginService {
@@ -32,10 +34,16 @@ export class LoginService {
       return this.user !== undefined
    }
 
-   authentication(usuario: string, senha: string): Observable<any> {
+   authentication(usuario: string, senha: string): Promise<any> {
       this.user = undefined
       this.estabelecimento = undefined
-      return this.afd.list(`/${this.path}`, ref => ref.orderByChild('usuario').equalTo(usuario)).snapshotChanges()
+      return new Promise((ok, r) => {
+         this.afd.list(`/${this.path}`, ref => ref.orderByChild('usuario').equalTo(usuario)).snapshotChanges().subscribe(a => {
+            ok(a)
+         }, error => {
+            reject(error)
+         })
+      })
    }
 
    exit() {
