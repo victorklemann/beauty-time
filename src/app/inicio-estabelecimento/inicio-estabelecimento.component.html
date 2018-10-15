@@ -2,18 +2,18 @@
    <div class="card-header">
       <div class="row">
          <div class="col-sm-4 text-center">
-            <button class="btn btn-outline-primary">
+            <button class="btn btn-outline-primary" (click)="back()">
                <i class="ti ti-angle-left"></i>
             </button>
          </div>
 
          <div class="col-sm-4 text-center">
-            <h6 class="media-heading">20/05/2018</h6>
+            <h6 class="media-heading">{{data}}</h6>
             <span class="f-12 text-muted">Terça-feira</span>
          </div>
 
          <div class="col-sm-4 text-center">
-            <button class="btn btn-outline-primary">
+            <button class="btn btn-outline-primary" (click)="next()">
                <i class="ti ti-angle-right"></i>
             </button>
          </div>

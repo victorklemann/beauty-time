@@ -12,7 +12,7 @@ import { AgendaService } from './agenda.service';
 import { ShopProfileService } from '../profile/shop-profile/shop-profile.service';
 import { Estabelecimento } from '../profile/shop-profile/shop-profile.model';
 import { ActivatedRoute } from '@angular/router';
-import { TIPOS_DURACAO, HORAS } from '../cadastro/servico/servico.tipo-duracao.model';
+import { HORAS } from '../cadastro/servico/servico.tipo-duracao.model';
 
 @Component({
    selector: 'app-agenda',

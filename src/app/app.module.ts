@@ -22,34 +22,38 @@ import { DataBaseService } from './general/database.service';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { LoginService } from './sign-in/login/login.service';
+import { ShopProfileService } from './profile/shop-profile/shop-profile.service';
+import { FuncionarioService } from './cadastro/funcionario/funcionario.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AdminLayoutComponent,
-    AuthLayoutComponent,
-    BreadcrumbsComponent,
-    TitleComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    SharedModule,
-    RouterModule.forRoot(AppRoutes),
-    HttpModule,
-    FormsModule,
-    ScrollModule,
-    AngularFireModule.initializeApp(FirebaseConfig),
-    AngularFireDatabaseModule,
-    TextMaskModule
-  ],
-  exports: [ScrollModule],
-  providers: [
-    DataBaseService,
-    { provide: LocationStrategy, useClass: PathLocationStrategy },
-    NotificationsComponent,
-    LoginService
-  ],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      AdminLayoutComponent,
+      AuthLayoutComponent,
+      BreadcrumbsComponent,
+      TitleComponent
+   ],
+   imports: [
+      BrowserModule,
+      BrowserAnimationsModule,
+      SharedModule,
+      RouterModule.forRoot(AppRoutes),
+      HttpModule,
+      FormsModule,
+      ScrollModule,
+      AngularFireModule.initializeApp(FirebaseConfig),
+      AngularFireDatabaseModule,
+      TextMaskModule
+   ],
+   exports: [ScrollModule],
+   providers: [
+      DataBaseService,
+      { provide: LocationStrategy, useClass: PathLocationStrategy },
+      NotificationsComponent,
+      LoginService,
+      ShopProfileService,
+      FuncionarioService
+   ],
+   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

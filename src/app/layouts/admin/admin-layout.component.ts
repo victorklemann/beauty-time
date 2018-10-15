@@ -5,6 +5,7 @@ import { state, style, transition, animate, trigger, AUTO_STYLE } from '@angular
 import { MenuItems } from '../../shared/menu-items/menu-items';
 import { LoginService } from '../../sign-in/login/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Usuario } from '../../cadastro/usuario/usuario.model';
 
 export interface Options {
    heading?: string;
@@ -46,12 +47,13 @@ export class AdminLayoutComponent implements OnInit {
    isCollapsedSideBar = 'no-block';
    toggleOn = true;
    windowWidth: number;
+   usuario: Usuario
+   tipoUsuario: string = 'Cliente'
 
    public htmlButton: string;
 
    constructor(public menuItems: MenuItems,
       private loginService: LoginService,
-      private route: ActivatedRoute,
       private router: Router) {
       const scrollHeight = window.screen.height - 150;
       this.innerHeight = scrollHeight + 'px';
@@ -60,7 +62,11 @@ export class AdminLayoutComponent implements OnInit {
    }
 
    ngOnInit() {
-      console.log(this.menuItems)
+      this.usuario = this.loginService.getUser()
+      let funcionario = this.loginService.getFuncionario()
+      if (funcionario !== undefined && funcionario !== null) {
+         this.tipoUsuario = funcionario.tipoUsuario.descricao
+      }
    }
 
    exit() {

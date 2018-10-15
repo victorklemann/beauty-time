@@ -3,7 +3,6 @@ import { Usuario } from '../../cadastro/usuario/usuario.model';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { NotificationsComponent } from '../../notifications/notifications.component';
-import { ShopProfileService } from '../../profile/shop-profile/shop-profile.service';
 
 @Component({
    selector: 'app-login',
@@ -14,7 +13,6 @@ export class LoginComponent implements OnInit {
    usuario = {} as Usuario
 
    constructor(private loginService: LoginService,
-               private estabelecimentoService: ShopProfileService,
                private notification: NotificationsComponent,
                private router: Router) { }
 
@@ -27,25 +25,15 @@ export class LoginComponent implements OnInit {
          return
       }
 
-      this.loginService.authentication(this.usuario.usuario, this.usuario.senha).subscribe(response => {
-         response.map(action => {
-            let user = action.payload.val()
-            if (user.senha === this.usuario.senha) {
-               this.loginService.setUser(user)
-               if (user.estabelecimentoKey !== null) {
-                  this.estabelecimentoService.estabelecimentoById(user.estabelecimentoKey).subscribe(estabelecimento => {
-                     this.loginService.setEstabelecimento(estabelecimento)
-                  })
-               }
-
-               this.notification.showSuccessMessage("Bem vindo, " + user.nome)
-               this.router.navigate(['/cadastro'])
-            } else {
-               this.notification.showErrorMessage("Dados inválidos")
-            }
-         })
+      this.loginService.authentication(this.usuario.usuario, this.usuario.senha).then(response => {
+         if (this.loginService.isLoggedIn()) {
+            this.notification.showSuccessMessage("Bem vindo, " + this.loginService.getUser().nome)
+            this.router.navigate(['/cadastro'])
+         } else {
+            this.notification.showErrorMessage("Dados inválidos")
+         }
       })
-
    }
+
 }
 

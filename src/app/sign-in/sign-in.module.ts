@@ -26,6 +26,6 @@ import { LoginComponent } from './login/login.component';
       UserComponent,
       LoginComponent
    ],
-   providers: [ UsuarioService, ShopProfileService, FuncionarioService ]
+   providers: [ UsuarioService ]
 })
 export class SignInModule { }

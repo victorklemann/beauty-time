@@ -8,7 +8,6 @@ import { InicioEstabelecimentoRoutes } from './inicio-estabelecimento.routing';
 import { InicioEstabelecimentoComponent } from './inicio-estabelecimento.component';
 import { AgendaService } from '../agenda/agenda.service';
 import { AgendaDetailComponent } from '../agenda/agenda-detail/agenda-detail.component';
-import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
    imports: [

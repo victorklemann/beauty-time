@@ -48,6 +48,7 @@ export class FuncionarioNovoComponent implements OnInit {
 
    salvar() {
       this.funcionario.servicos = this.servicos;
+      this.funcionario.usuarioKey = this.funcionario.usuario.key
       this.funcionarioService.save(this.funcionario)
       this.notification.showSuccessMessage('Salvo com sucesso!');
       this.router.navigate(['/cadastro/funcionario']);

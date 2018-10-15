@@ -35,15 +35,8 @@ const MENUITEMS_ESTABELECIMENTO = [
       label: 'Layout',
       main: [
          {
-            state: 'sign-in',
-            name: 'Usuario',
-            type: 'link',
-            icon: 'ti-home',
-            target: true
-         },
-         {
             state: 'inicio-estabelecimento',
-            name: 'Início Salão',
+            name: 'Home',
             type: 'link',
             icon: 'ti-home'
          },
@@ -71,21 +64,13 @@ const MENUITEMS_ESTABELECIMENTO = [
    }
 ];
 
-
 const MENUITEMS_CLIENTE = [
    {
       label: 'Layout',
       main: [
          {
-            state: 'sign-in',
-            name: 'Usuario',
-            type: 'link',
-            icon: 'ti-home',
-            target: true
-         },
-         {
             state: 'inicio-usuario',
-            name: 'Início Usuário',
+            name: 'Home',
             type: 'link',
             icon: 'ti-home'
          }
@@ -101,7 +86,9 @@ export class MenuItems {
 
    getAll(): Menu[] {
       let estabelecimento = this.usuarioService.getEstabelecimento()
-      if ((estabelecimento !== undefined) && (estabelecimento !== null)) return MENUITEMS_ESTABELECIMENTO;
+      let funcionario = this.usuarioService.getFuncionario()
+      if ((estabelecimento !== undefined && estabelecimento !== null)
+                  || (funcionario !== undefined && funcionario !== null)) return MENUITEMS_ESTABELECIMENTO;
       return MENUITEMS_CLIENTE;
    }
 }
