@@ -38,7 +38,7 @@
                         </a>
                         <ul class="show-notification profile-notification">
                            <li>
-                              <a routerLinkActive="detail-active" [routerLink]="['/profile', 'shop']">
+                              <a routerLinkActive="detail-active" *ngIf="isSalao" [routerLink]="['/profile', 'shop']">
                                  <i class="ti-settings"></i> Configurações
                               </a>
                            </li>
@@ -90,7 +90,7 @@
                                  <i class="ti-user"></i>Perfil
                               </a>
 
-                              <a routerLinkActive="detail-active" [routerLink]="['/profile', 'shop']">
+                              <a routerLinkActive="detail-active" *ngIf="isSalao" [routerLink]="['/profile', 'shop']">
                                  <i class="ti-settings"></i>Configurações
                               </a>
 

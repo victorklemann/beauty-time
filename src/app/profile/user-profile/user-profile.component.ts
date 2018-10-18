@@ -7,6 +7,7 @@ import { UsuarioService } from '../../cadastro/usuario/usuario.service';
 import { Estado, ESTADOS } from '../../general/estado.model';
 import { CIDADES } from '../../general/cidade.model';
 import { SEXOS } from '../../general/sexo.model';
+import { LoginService } from '../../sign-in/login/login.service';
 
 @Component({
    selector: 'app-user-profile',
@@ -23,13 +24,14 @@ export class UserProfileComponent implements OnInit {
    private sexos = SEXOS;
 
    constructor(private usuarioService: UsuarioService,
-               private notification: NotificationsComponent) { }
+               private notification: NotificationsComponent,
+               private loginService: LoginService) { }
 
    ngOnInit() {
-      this.usuarioService.usuarioById("-LKi0yDd7Eyiqi8I3xqb").subscribe(usuario => {
-         this.usuario = usuario;
-         this.estado = usuario.cidade.estado;
-      });
+      this.usuario = this.loginService.getUser()
+      if (this.usuario.cidade !== undefined) {
+         this.estado = this.usuario.cidade.estado
+      }
    }
 
    salvar() {
@@ -39,7 +41,7 @@ export class UserProfileComponent implements OnInit {
    }
 
    clear() {
-      this.usuarioService.usuarioById("-LKi0yDd7Eyiqi8I3xqb").subscribe(usuario => this.usuario = usuario);
+      this.usuario = this.loginService.getUser()
       this.changeEditing();
    }
 

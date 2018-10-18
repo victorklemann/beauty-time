@@ -28,8 +28,7 @@ export class AgendaConfirmacaoComponent implements OnInit {
    salvar() {
       this.agenda.cliente = this.loginService.getUser()
       this.agenda.status = AGENDADO;
-      this.agendaService.save(this.agenda);
-      this.agendaComponent.changeFuncionario();
+      this.agendaService.save(this.agenda)
       this.notification.showSuccessMessage('Salvo com sucesso!');
       this.activeModal.dismiss();
    }

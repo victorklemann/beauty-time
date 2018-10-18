@@ -4,6 +4,8 @@ import { Agenda } from '../agenda/agenda.model';
 import { AgendaDetailComponent } from '../agenda/agenda-detail/agenda-detail.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
+import { LoginService } from '../sign-in/login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
    selector: 'app-inicio-estabelecimento',
@@ -15,7 +17,7 @@ export class InicioEstabelecimentoComponent implements OnInit {
    data = undefined;
 
    constructor(private modal: NgbModal,
-               private agendaService: AgendaService) { }
+               private agendaService: AgendaService, private loginService: LoginService, private router: Router) { }
 
    ngOnInit() {
       this.data = moment().format('DD/MM/YYYY')

@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
 
    salvar() {
       this.usuarioService.save(this.usuario);
-      this.router.navigate(['/cadastro/usuario']);
+      this.router.navigate(['/inicio-usuario']);
    }
 
 }

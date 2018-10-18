@@ -35,11 +35,11 @@ export class AgendaComponent implements OnInit {
    estabelecimento = {} as Estabelecimento;
 
    constructor(private modal: NgbModal,
-               private shopService: ShopProfileService,
-               private servicoService: ServicoService,
-               private funcionarioService: FuncionarioService,
-               private agendaService: AgendaService,
-               private route: ActivatedRoute) { }
+      private shopService: ShopProfileService,
+      private servicoService: ServicoService,
+      private funcionarioService: FuncionarioService,
+      private agendaService: AgendaService,
+      private route: ActivatedRoute) { }
 
    ngOnInit() {
       let route = this.route.snapshot.params['key']
@@ -72,32 +72,34 @@ export class AgendaComponent implements OnInit {
    changeFuncionario() {
       this.agendas = [];
 
-      let agendasFuncionario = [];
       let funcionario = this.agenda.funcionario;
 
-      this.agendaService.agendasByFuncionario(funcionario.key).subscribe(response => agendasFuncionario = response);
-
-      let horarioInicio = moment(funcionario.expedienteDe, 'HH:mm');
-      let horarioFim = moment(funcionario.expedienteAte, 'HH:mm');
-      while (horarioInicio.isSameOrBefore(horarioFim)) {
-         let agenda = _.find(this.allAgendas, (agenda) => (agenda.horaInicio == horarioInicio.format('HH:mm') ||
-                                                           agenda.horaFim == horarioFim.format('HH:mm') ||
-                                                           (horarioInicio.format('HH:mm') > agenda.horaInicio && horarioInicio.format('HH:mm') < agenda.horaFim)) &&
-                                                           agenda.funcionarioKey === funcionario.key ) as Agenda;
-
-         if (agenda === undefined) {
-            agenda = {} as Agenda;
-            agenda.horaInicio = horarioInicio.format('HH:mm');
-         }
-
-         if (horarioInicio.isSameOrAfter(moment(funcionario.intervaloDe, 'HH:mm')) && horarioInicio.isBefore(moment(funcionario.intervaloAte, 'HH:mm'))) {
+      this.agendaService.agendasByFuncionario(funcionario.key).subscribe(response => {
+         this.agendas = []
+         let agendasFuncionario = []
+         agendasFuncionario = _.where(response, { data: this.data})
+         let horarioInicio = moment(funcionario.expedienteDe, 'HH:mm');
+         let horarioFim = moment(funcionario.expedienteAte, 'HH:mm');
+         while (horarioInicio.isSameOrBefore(horarioFim)) {
+            let agenda = _.find(agendasFuncionario, (agenda) => (agenda.horaInicio == horarioInicio.format('HH:mm') ||
+               agenda.horaFim == horarioFim.format('HH:mm') ||
+               (horarioInicio.format('HH:mm') > agenda.horaInicio && horarioInicio.format('HH:mm') < agenda.horaFim)) &&
+               agenda.funcionarioKey === funcionario.key) as Agenda;
+   
+            if (agenda === undefined) {
+               agenda = {} as Agenda;
+               agenda.horaInicio = horarioInicio.format('HH:mm');
+            }
+   
+            if (horarioInicio.isSameOrAfter(moment(funcionario.intervaloDe, 'HH:mm')) && horarioInicio.isBefore(moment(funcionario.intervaloAte, 'HH:mm'))) {
+               horarioInicio = horarioInicio.add(30, 'minutes');
+               continue;
+            } else {
+               this.agendas.push(agenda);
+            }
             horarioInicio = horarioInicio.add(30, 'minutes');
-            continue;
-         } else {
-            this.agendas.push(agenda);
          }
-         horarioInicio = horarioInicio.add(30, 'minutes');
-      }
+      });
    }
 
    open(horario: string) {
@@ -105,7 +107,7 @@ export class AgendaComponent implements OnInit {
 
       this.agenda.data = this.data;
 
-      let servico = _.findWhere(this.servicos, {key: this.agenda.servico.key})
+      let servico = _.findWhere(this.servicos, { key: this.agenda.servico.key })
 
       let hora = moment(horario, 'HH:mm');
       let horaInicio = hora.format('HH:mm');
@@ -126,6 +128,16 @@ export class AgendaComponent implements OnInit {
 
    refreshFuncionarios() {
       this.funcionarioService.funcionarios().subscribe(funcionarios => this.allFuncionarios = funcionarios);
+   }
+
+   next() {
+      this.data = moment(this.data, 'DD/MM/YYYY').add(1, 'days').format('DD/MM/YYYY')
+      this.changeFuncionario()
+   }
+
+   back() {
+      this.data = moment(this.data, 'DD/MM/YYYY').add(-1, 'days').format('DD/MM/YYYY')
+      this.changeFuncionario()
    }
 
 }

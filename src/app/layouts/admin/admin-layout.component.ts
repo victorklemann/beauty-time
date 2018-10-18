@@ -49,6 +49,7 @@ export class AdminLayoutComponent implements OnInit {
    windowWidth: number;
    usuario: Usuario
    tipoUsuario: string = 'Cliente'
+   isSalao: boolean = false
 
    public htmlButton: string;
 
@@ -66,6 +67,12 @@ export class AdminLayoutComponent implements OnInit {
       let funcionario = this.loginService.getFuncionario()
       if (funcionario !== undefined && funcionario !== null) {
          this.tipoUsuario = funcionario.tipoUsuario.descricao
+      }
+
+      let estabelecimento = this.loginService.getEstabelecimento()
+      if (estabelecimento !== undefined && estabelecimento !== null) {
+         this.isSalao = true
+         this.tipoUsuario = 'Administrador'
       }
    }
 

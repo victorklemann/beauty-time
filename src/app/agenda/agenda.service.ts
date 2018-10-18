@@ -24,10 +24,10 @@ export class AgendaService {
       this.list = this.afd.list(this.path)
    }
 
-   save(agenda: Agenda) {
+   save(agenda: Agenda): Observable<any> {
       if (this.loginService.isLoggedIn) {
          agenda.cliente = this.loginService.getUser()
-         this.dbService.save(this.list, agenda)
+         return this.dbService.save(this.list, agenda)
       }
    }
 

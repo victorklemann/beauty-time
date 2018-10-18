@@ -54,15 +54,12 @@ export class LoginService {
                   if (user !== undefined) {
                      if (user.senha === senha) {
                         this.setUser(_.extend(action.payload.val(), { key: action.payload.key }))
+                        this.funcionarioService.funcionarioByUsuario(this.getUser().key).then(funcionario => this.setFuncionario(funcionario))
                         if (user.estabelecimentoKey !== null) {
                            this.estabelecimentoService.estabelecimentoById(user.estabelecimentoKey).subscribe(estabelecimento => {
                               this.setEstabelecimento(estabelecimento)
                            })
                         }
-
-                        this.funcionarioService.funcionarioByUsuario(this.getUser().key).then(funcionario => {
-                           this.setFuncionario(funcionario)
-                        })
                      }
                   }
                })

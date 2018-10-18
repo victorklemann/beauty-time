@@ -36,7 +36,7 @@ export class ShopComponent implements OnInit {
             this.funcionarioService.save(this.funcionario)
          })
       });
-      this.router.navigate(['/cadastro/usuario']);
+      this.router.navigate(['/inicio-estabelecimento']);
    }
 
 }
