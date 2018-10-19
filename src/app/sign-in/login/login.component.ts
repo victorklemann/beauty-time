@@ -28,12 +28,15 @@ export class LoginComponent implements OnInit {
       this.loginService.authentication(this.usuario.usuario, this.usuario.senha).then(response => {
          if (this.loginService.isLoggedIn()) {
             this.notification.showSuccessMessage("Bem vindo, " + this.loginService.getUser().nome)
-            
-            if (this.loginService.getEstabelecimento() !== undefined && this.loginService.getEstabelecimento() !== null) {
+
+            if (this.loginService.getEstabelecimento()) {
+               console.log('estab');
                this.router.navigate(['/inicio-estabelecimento']);
-            } else if (this.loginService.getFuncionario() !== undefined && this.loginService.getFuncionario() !== null) {
+            } else if (this.loginService.getFuncionario()) {
+               console.log('func');
                this.router.navigate(['/inicio-estabelecimento']);
-            } else if (this.loginService.getUser() !== undefined && this.loginService.getUser !== null) {
+            } else if (this.loginService.getUser()) {
+               console.log('user');
                this.router.navigate(['/inicio-usuario']);
             } else {
                this.router.navigate(['/sign-in']);

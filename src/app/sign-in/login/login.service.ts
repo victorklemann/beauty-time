@@ -43,27 +43,28 @@ export class LoginService {
       return this.getUser() !== undefined
    }
 
-   authentication(usuario: string, senha: string): Promise<any> {
+   async authentication(usuario: string, senha: string): Promise<any> {
       this.user = undefined
       this.estabelecimento = undefined
       return new Promise((ok, r) => {
          this.afd.list(`/${this.path}`, ref => ref.orderByChild('usuario').equalTo(usuario)).snapshotChanges().subscribe(a => {
-            ok(
-               a.map(action => {
-                  let user = action.payload.val()
-                  if (user !== undefined) {
-                     if (user.senha === senha) {
-                        this.setUser(_.extend(action.payload.val(), { key: action.payload.key }))
-                        this.funcionarioService.funcionarioByUsuario(this.getUser().key).then(funcionario => this.setFuncionario(funcionario))
-                        if (user.estabelecimentoKey !== null) {
-                           this.estabelecimentoService.estabelecimentoById(user.estabelecimentoKey).subscribe(estabelecimento => {
-                              this.setEstabelecimento(estabelecimento)
-                           })
-                        }
+            let promessas = []
+            var retorno = a.map(action => {
+               let user = action.payload.val()
+               if (user !== undefined) {
+                  if (user.senha === senha) {
+                     this.setUser(_.extend(action.payload.val(), { key: action.payload.key }))
+                     promessas.push(this.funcionarioService.funcionarioByUsuario(this.getUser().key).then(funcionario => this.setFuncionario(funcionario)));
+
+                     if (user.estabelecimentoKey !== null) {
+                        promessas.push(this.estabelecimentoService.estabelecimentoById(user.estabelecimentoKey).subscribe(estabelecimento => {
+                           this.setEstabelecimento(estabelecimento)
+                        }))
                      }
                   }
-               })
-            )
+               }
+            })
+            Promise.all(promessas).then(() => ok(retorno))
          }, error => {
             reject(error)
          })
