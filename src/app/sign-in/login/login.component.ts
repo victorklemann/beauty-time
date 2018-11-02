@@ -30,13 +30,10 @@ export class LoginComponent implements OnInit {
             this.notification.showSuccessMessage("Bem vindo, " + this.loginService.getUser().nome)
 
             if (this.loginService.getEstabelecimento()) {
-               console.log('estab');
                this.router.navigate(['/inicio-estabelecimento']);
             } else if (this.loginService.getFuncionario()) {
-               console.log('func');
                this.router.navigate(['/inicio-estabelecimento']);
             } else if (this.loginService.getUser()) {
-               console.log('user');
                this.router.navigate(['/inicio-usuario']);
             } else {
                this.router.navigate(['/sign-in']);

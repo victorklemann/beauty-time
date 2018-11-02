@@ -85,12 +85,12 @@ export class AgendaComponent implements OnInit {
                agenda.horaFim == horarioFim.format('HH:mm') ||
                (horarioInicio.format('HH:mm') > agenda.horaInicio && horarioInicio.format('HH:mm') < agenda.horaFim)) &&
                agenda.funcionarioKey === funcionario.key) as Agenda;
-   
+
             if (agenda === undefined) {
                agenda = {} as Agenda;
                agenda.horaInicio = horarioInicio.format('HH:mm');
             }
-   
+
             if (horarioInicio.isSameOrAfter(moment(funcionario.intervaloDe, 'HH:mm')) && horarioInicio.isBefore(moment(funcionario.intervaloAte, 'HH:mm'))) {
                horarioInicio = horarioInicio.add(30, 'minutes');
                continue;
