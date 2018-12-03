@@ -21,4 +21,8 @@ export class UserComponent implements OnInit {
       this.router.navigate(['/inicio-usuario']);
    }
 
+   voltar() {
+      this.router.navigate(['/sign-in']);
+   }
+
 }

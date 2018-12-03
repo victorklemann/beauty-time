@@ -39,4 +39,8 @@ export class ShopComponent implements OnInit {
       this.router.navigate(['/inicio-estabelecimento']);
    }
 
+   voltar() {
+      this.router.navigate(['/sign-in']);
+   }
+
 }

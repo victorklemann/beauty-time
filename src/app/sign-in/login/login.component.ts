@@ -44,5 +44,9 @@ export class LoginComponent implements OnInit {
       })
    }
 
+   voltar() {
+      this.router.navigate(['/sign-in']);
+   }
+
 }
 

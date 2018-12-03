@@ -1,12 +1,12 @@
 <section class="login d-flex text-center bg-primary common-img-bg">
       <div class="auth-fluid">
          <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                <div class="login-card card-body auth-body" style="max-width: 370px;">
                   <div class="auth-box">
                      <div class="row m-b-20">
                         <div class="col-md-12">
-                           <h3 class="text-center txt-primary">Marque sua hora!</h3>
+                           <h3 class="text-center txt-primary">Beauty Time</h3>
                         </div>
                      </div>
 
@@ -14,66 +14,36 @@
 
                      <div class="row m-b-20">
                         <div class="col-md-12">
-                           <span class="text-inverse">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                              feugiat enim maximus dapibus
-                              auctor. Curabitur venenatis varius odio at mollis. Duis feugiat, tellus eu mattis dictum,
-                              quam
-                              ante mattis lacus, id sagittis velit justo quis erat.
+                           <span class="text-inverse">Encontre os serviços de beleza
+                                 mais próximos de você e agende online.
                            </span>
                         </div>
                      </div>
 
                      <p class="text-inverse b-b-default text-left p-b-5"></p>
 
-                     <div class="row m-t-30">
-                        <div class="col-md-12">
-                           <button class="btn btn-success btn-md btn-block waves-effect text-center m-b-20"
-                              routerLinkActive="detail-active" [routerLink]="['user']">Quero me tornar cliente</button>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-
-            <div class="col-sm-6">
-               <div class="login-card card-body auth-body" style="max-width: 370px;">
-                  <div class="auth-box">
-                     <div class="row m-b-20">
-                        <div class="col-md-12">
-                           <h3 class="text-center txt-primary">Disponibilize sua agenda!</h3>
+                     <div class="row">
+                        <div class="col-md-12 text-center">
+                           <button class="btn btn-success btn-block btn-md waves-effect text-center m-b-20" routerLinkActive="detail-active" [routerLink]="['login']">
+                              Entrar
+                           </button>
                         </div>
                      </div>
 
-                     <p class="text-inverse b-b-default text-left p-b-5"></p>
-
-                     <div class="row m-b-20">
-                        <div class="col-md-12">
-                           <span class="text-inverse">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                              feugiat enim maximus dapibus
-                              auctor. Curabitur venenatis varius odio at mollis. Duis feugiat, tellus eu mattis dictum,
-                              quam
-                              ante mattis lacus, id sagittis velit justo quis erat.
-                           </span>
-                        </div>
-                     </div>
-
-                     <p class="text-inverse b-b-default text-left p-b-5"></p>
-
-                     <div class="row m-t-30">
-                        <div class="col-md-12">
+                     <div class="row">
+                        <div class="col-md-6">
                            <button class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
-                              routerLinkActive="detail-active" [routerLink]="['shop']">Quero cadastrar meu salão</button>
+                              routerLinkActive="detail-active" [routerLink]="['user']">Novo cliente</button>
+                        </div>
+
+                        <div class="col-md-6">
+                           <button class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"
+                              routerLinkActive="detail-active" [routerLink]="['shop']">Novo salão</button>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
-
-            <div class="col-md-12 text-center">
-                  <button class="btn btn-primary btn-md waves-effect text-center m-b-20"
-                     routerLinkActive="detail-active" [routerLink]="['login']">Entrar</button>
-               </div>
          </div>
       </div>
    </section>
