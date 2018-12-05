@@ -15,17 +15,26 @@ export class InicioEstabelecimentoComponent implements OnInit {
 
    agendas = [] as Agenda[];
    data = undefined;
+   diaSemana: string;
 
    constructor(private modal: NgbModal,
                private agendaService: AgendaService, private loginService: LoginService, private router: Router) { }
 
    ngOnInit() {
-      this.data = moment().format('DD/MM/YYYY')
+      let date = moment()
+      date.locale('pt-BR')
+      this.data = date.format('DD/MM/YYYY')
       this.getAgendas()
+      
+      this.diaSemana = date.format('dddd');
    }
 
    getAgendas() {
-      this.agendaService.agendasByData(this.data).then(response => this.agendas = response);
+      this.agendaService.agendasByData(this.data).then(response => {
+         console.log(response);
+         
+         this.agendas = response
+      });
    }
 
    open(agenda: Agenda) {

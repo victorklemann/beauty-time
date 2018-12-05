@@ -79,12 +79,12 @@
                <div class="card-block">
                   <div class="row">
                      <div class="col-sm-4" *ngFor="let agenda of agendas">
-                        <button class="btn btn-{{ agenda.status?.codigo == '1' ? 'danger' : 'success' }} btn-block"
+                        <button class="btn btn-{{ agenda.status?.codigo !== null ? 'danger' : 'success' }} btn-block"
                                 style="margin-bottom: 10px;"
                                 (click)="open(agenda.horaInicio)"
-                                [disabled]="agenda.status?.codigo == '1'">
-                           <span *ngIf="agenda.status?.codigo != '1'">{{agenda.horaInicio}}</span>
-                           <span *ngIf="agenda.status?.codigo == '1'"><i class="icofont icofont-lock"></i></span>
+                                [disabled]="agenda.status?.codigo !== null">
+                           <span *ngIf="agenda.status?.codigo === null">{{agenda.horaInicio}}</span>
+                           <span *ngIf="agenda.status?.codigo !== null"><i class="icofont icofont-lock"></i></span>
                         </button>
                      </div>
                   </div>

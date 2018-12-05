@@ -26,7 +26,6 @@ export class AgendaService {
 
    save(agenda: Agenda): Observable<any> {
       if (this.loginService.isLoggedIn) {
-         agenda.cliente = this.loginService.getUser()
          return this.dbService.save(this.list, agenda)
       }
    }
@@ -42,7 +41,7 @@ export class AgendaService {
    agendasByData(data: string): Promise<any[]> {
       return new Promise((ok, r) => {
          if (this.loginService.getFuncionario() !== null && this.loginService.getFuncionario() !== undefined) {
-            this.agendasByFuncionario(this.loginService.getFuncionario().key).subscribe(response => {
+            this.agendasByFuncionario(this.loginService.getFuncionario().key).then(response => {
                let agendas: Agenda[] = []
                response.forEach(agenda => {
                   if (agenda.data === data) {
@@ -67,8 +66,17 @@ export class AgendaService {
       return this.dbService.objectById(this.afd.object(`/${this.path}/${key}`))
    }
 
-   agendasByFuncionario(keyFuncionario: string): Observable<Agenda[]> {
-      return this.afd.list(this.path, ref => ref.orderByChild('funcionarioKey').equalTo(keyFuncionario)).valueChanges();
+   agendasByFuncionario(keyFuncionario: string): Promise<any[]> {
+      return new Promise((ok, r) => {
+      this.afd.list(this.path, ref => ref.orderByChild('funcionarioKey').equalTo(keyFuncionario)).snapshotChanges().subscribe(actions => {
+            let data = []
+            actions.map(a => {
+               data.push(_.extend(a.payload.val(), { key: a.payload.key }));
+            });
+            ok(data)
+         });
+      })
+         
    }
 
 }

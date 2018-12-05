@@ -31,6 +31,7 @@ export class AgendaConfirmacaoComponent implements OnInit {
       this.agendaService.save(this.agenda)
       this.notification.showSuccessMessage('Salvo com sucesso!');
       this.activeModal.dismiss();
+      this.agendaComponent.changeFuncionario();
    }
 
 }

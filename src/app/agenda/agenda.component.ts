@@ -52,6 +52,7 @@ export class AgendaComponent implements OnInit {
       this.agendaService.agendas().subscribe(agendas => this.allAgendas = agendas);
 
       let dataAtual = moment();
+      dataAtual.locale('pt-BR')
       this.data = dataAtual.format('DD/MM/YYYY');
       this.diaSemana = dataAtual.format('dddd');
    }
@@ -74,7 +75,8 @@ export class AgendaComponent implements OnInit {
 
       let funcionario = this.agenda.funcionario;
 
-      this.agendaService.agendasByFuncionario(funcionario.key).subscribe(response => {
+      this.agendaService.agendasByFuncionario(funcionario.key).then(response => {
+         
          this.agendas = []
          let agendasFuncionario = []
          agendasFuncionario = _.where(response, { data: this.data})
@@ -85,7 +87,7 @@ export class AgendaComponent implements OnInit {
                agenda.horaFim == horarioFim.format('HH:mm') ||
                (horarioInicio.format('HH:mm') > agenda.horaInicio && horarioInicio.format('HH:mm') < agenda.horaFim)) &&
                agenda.funcionarioKey === funcionario.key) as Agenda;
-
+            
             if (agenda === undefined) {
                agenda = {} as Agenda;
                agenda.horaInicio = horarioInicio.format('HH:mm');
@@ -100,6 +102,8 @@ export class AgendaComponent implements OnInit {
             horarioInicio = horarioInicio.add(30, 'minutes');
          }
       });
+
+      
    }
 
    open(horario: string) {
